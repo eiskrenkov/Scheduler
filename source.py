@@ -45,7 +45,7 @@ def weather(message):
 @skaffer.message_handler(commands=['tt'])
 def timetable(message):
 	skaffer.send_message(message.chat.id, 'Хорошо, сейчас я скину тебе расписание :)')
-	with open('/Users/MrBlazOn/Desktop/SkafferBot/timetable.txt') as tt:
+	with open('timetable.txt') as tt:
 		temp = tt.read()
 		skaffer.send_message(message.chat.id, temp)
 
@@ -59,7 +59,7 @@ def next(message):
 	# week_day = 'Tue'
 	week_day += '.txt'
 
-	path = '/Users/MrBlazOn/Desktop/SkafferBot/days/'
+	path = 'week_days/'
 	path += week_day
 
 	with open(path) as week_day_file:
