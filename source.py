@@ -105,4 +105,5 @@ def next(message):
 
 			skaffer.send_message(message.chat.id, pair_message)
 
-skaffer.polling()
+if __name__ == '__main__':
+    skaffer.polling(none_stop=True)
