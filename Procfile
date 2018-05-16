@@ -1,1 +1,1 @@
-bot: python source.py
+web: python source.py
