@@ -4,6 +4,8 @@ import datetime
 import time
 import os
 
+port = int(os.environ.get(“PORT”, 5000))
+
 class BotHandler:
  
     def __init__(self, token):
