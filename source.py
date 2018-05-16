@@ -66,7 +66,7 @@ def next(last_chat_id): # Функция отправляет в чат сооб
 	# week_day = 'Tue'
 	week_day += '.txt'
 
-	path = '/Users/MrBlazOn/Desktop/SkafferBot/week_days/'
+	path = 'week_days/'
 	path += week_day
 
 	with open(path) as week_day_file:
