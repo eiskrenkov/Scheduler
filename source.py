@@ -120,7 +120,7 @@ def help(last_chat_id):
 skaffer = BotHandler(config.token) # Создание бота с заданным токеном
 
 def main():
-	port = int(os.environ.get(“PORT”, 5000))
+# 	port = int(os.environ.get(“PORT”, 5000))
 	new_offset = None
 
 	weather_dict = ['/weather', 'погода', 'прогноз']
