@@ -199,7 +199,7 @@ def main():
 	tt_dict = ['/tt', 'tt', '/timetable', 'timetable', 'расписание']
 	tod_tt_dict = ['/tod', 'tod', 'сегодня', 'расписос']
 	tom_tt_dict = ['/tom', 'tom', 'завтра']
-	changelod_dict = ['/changelog', 'что нового', 'что нового?']
+	changelog_dict = ['/changelog', 'что нового', 'что нового?']
 
 	while True:
 		# Получение информации с сервера
