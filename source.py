@@ -38,13 +38,51 @@ class BotHandler:
 def help(last_chat_id):
 	skaffer.send_message(last_chat_id, text = 'Что я могу: \n\n/tt - Получить полное расписание занятий\n/next - Какая же у меня следующая пара? \n/weather - Информация о погоде')
 
-# Функция отправляет в чат расписание занятий
+# Функция отправляет в чат все расписание занятий
 def timetable(last_chat_id):
 	with open('timetable.txt') as tt_file:
 		tt_text = tt_file.read()
 
 	skaffer.send_message(last_chat_id, 'Ваше расписание на второй семестр 1 курса:')
 	skaffer.send_message(last_chat_id, tt_text)
+
+# Функция отправляет в чат расписание занятий на сегодня
+def today_timetable(last_chat_id):
+	day = list(time.ctime().split())
+	week_day = day[0]
+
+	path = 'week_days/'
+	path += week_day
+
+	with open(path) as tt_today_file:
+		tt_today_text = tt_today_file.read()
+
+	skaffer.send_message(last_chat_id, 'Ваше расписание на сегодня:')
+	skaffer.send_message(last_chat_id, tt_today_text)
+
+# Функция отправляет в чат расписание занятий на завтра
+def tomorrow_timetable(last_chat_id):
+	week_days_list = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
+	day = list(time.ctime().split())
+	week_day = day[0]
+
+	if week_day == 'Fri' or week_day == 'Sat':
+		skaffer.send_message(last_chat_id, 'Завтра выходной, какая учеба?')
+	else:
+		if week_day == 'Sun':
+			week_day = 'Mon'
+		else:
+			week_day_number = week_days_list.index(week_day)
+			week_day = week_days_list[week_day_number + 1]
+
+		path = 'week_days/'
+		path += week_day
+
+		with open(path) as tt_today_file:
+			tt_today_text = tt_today_file.read()
+
+		skaffer.send_message(last_chat_id, 'Ваше расписание на сегодня:')
+		skaffer.send_message(last_chat_id, tt_today_text)
 
 # Функция отправляет в чат сообщение с информацией о текущей погоде
 def weather(last_chat_id):
@@ -129,19 +167,26 @@ def next(last_chat_id):
 
 			skaffer.send_message(last_chat_id, pair_message)
 
-skaffer = BotHandler(config.token) # Создание бота с заданным токеном
+# Создание бота с заданным токеном
+skaffer = BotHandler(config.token)
 
 def main():
 	new_offset = None
 
+	# Словари для вызова комманд разными способами
+	next_dict = ['/next', 'след', 'следующая', 'дальше']
+	help_dict = ['/help', 'помощь', 'памагити']
 	weather_dict = ['/weather', 'погода', 'прогноз']
 	tt_dict = ['/tt', '/timetable', 'расписание']
+	tod_tt_dict = ['/tod', 'сегодня', 'расписос']
+	tom_tt_dict = ['/tom', 'завтра']
 
 	while True:
+		# Получение информации с сервера
 		skaffer.get_updates(new_offset)
-
 		last_update = skaffer.get_last_update()
 
+		# При получении непустого ответа с сервера
 		if last_update != {}:
 			last_update_id = last_update['update_id']
 			last_chat_text = last_update['message']['text']
@@ -150,12 +195,16 @@ def main():
 
 			if last_chat_text.lower() in weather_dict:
 				weather(last_chat_id)
-			elif last_chat_text.lower() == '/next':
+			elif last_chat_text.lower() in next_dict:
 				next(last_chat_id)
-			elif last_chat_text.lower() == '/help' or last_chat_text.lower() == 'помощь':
+			elif last_chat_text.lower() in help_dict:
 				help(last_chat_id)
 			elif last_chat_text.lower() in tt_dict:
 				timetable(last_chat_id)
+			elif last_chat_text.lower() in tod_tt_dict:
+				today_timetable(last_chat_id)
+			elif last_chat_text.lower() in tom_tt_dict:
+				tomorrow_timetable(last_chat_id)
 
 			last_chat_message = '['
 			last_chat_message += last_chat_text
