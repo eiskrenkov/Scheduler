@@ -34,9 +34,15 @@ class BotHandler:
 
 		return last_update
 
+def start(last_chat_id, last_chat_name):
+	greet_msg = 'Привет, '
+	greet_msg += last_chat_name
+	greet_msg += '! Меня зовут Skaffer и я полностью в твоем распоряжении :)\nP.S Используй /help, чтобы узнать, что я умею'
+	skaffer.send_message(last_chat_id, greet_msg)
+
 # Функция отправляет в чат сообщение с полезной для пользователя информацией
 def help(last_chat_id):
-	skaffer.send_message(last_chat_id, text = 'Что я могу: \n\n/tt - Получить полное расписание занятий\n/next - Какая же у меня следующая пара? \n/weather - Информация о погоде')
+	skaffer.send_message(last_chat_id, text = 'Что я могу:\n\n/tt - Получить полное расписание занятий\n/next - Какая же у меня следующая пара?\n/weather - Информация о погоде\n/tod - Расписание на сегодня\n/tom - Расписание на завтра')
 
 # Функция отправляет в чат все расписание занятий
 def timetable(last_chat_id):
@@ -53,6 +59,7 @@ def today_timetable(last_chat_id):
 
 	path = 'week_days/'
 	path += week_day
+	week_day += '.txt'
 
 	with open(path) as tt_today_file:
 		tt_today_text = tt_today_file.read()
@@ -77,6 +84,7 @@ def tomorrow_timetable(last_chat_id):
 
 		path = 'week_days/'
 		path += week_day
+		week_day += '.txt'
 
 		with open(path) as tt_today_file:
 			tt_today_text = tt_today_file.read()
@@ -193,7 +201,9 @@ def main():
 			last_chat_id = last_update['message']['chat']['id']
 			last_chat_name = last_update['message']['chat']['first_name']
 
-			if last_chat_text.lower() in weather_dict:
+			if last_chat_text.lower() == '/start':
+				start(last_chat_id, last_chat_name)
+			elif last_chat_text.lower() in weather_dict:
 				weather(last_chat_id)
 			elif last_chat_text.lower() in next_dict:
 				next(last_chat_id)
