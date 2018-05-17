@@ -1,64 +1,78 @@
-import config
+import config # Файл содержит настройки бота
+
 import requests
 import datetime
 import time
 import os
 
-# Git checking
-
+# Класс для обработки изменений на сервере
 class BotHandler:
- 
-    def __init__(self, token):
-        self.token = token
-        self.api_url = "https://api.telegram.org/bot{}/".format(token)
- 
-    def get_updates(self, offset = None, timeout = 30):
-        method = 'getUpdates'
-        params = {'timeout': timeout, 'offset': offset}
-        resp = requests.get(self.api_url + method, params)
-        result_json = resp.json()['result']
-        return result_json
- 
-    def send_message(self, chat_id, text):
-        params = {'chat_id': chat_id, 'text': text}
-        method = 'sendMessage'
-        resp = requests.post(self.api_url + method, params)
-        return resp
- 
-    def get_last_update(self):
-        get_result = self.get_updates()
-        last_update = {}
- 
-        if len(get_result) > 0:
-            last_update = get_result[-1]
- 
-        return last_update
 
-def weather(last_chat_id): # Функция отправляет в чат сообщение с информацией о текущей погоде
+	def __init__(self, token):
+		self.token = token
+		self.api_url = "https://api.telegram.org/bot{}/".format(token)
+
+	def get_updates(self, offset = None, timeout = 30):
+		method = 'getUpdates'
+		params = {'timeout': timeout, 'offset': offset}
+		resp = requests.get(self.api_url + method, params)
+		result_json = resp.json()['result']
+		return result_json
+
+	def send_message(self, chat_id, text):
+		params = {'chat_id': chat_id, 'text': text}
+		method = 'sendMessage'
+		resp = requests.post(self.api_url + method, params)
+		return resp
+
+	def get_last_update(self):
+		get_result = self.get_updates()
+		last_update = {}
+
+		if len(get_result) > 0:
+			last_update = get_result[-1]
+
+		return last_update
+
+# Функция отправляет в чат сообщение с полезной для пользователя информацией
+def help(last_chat_id):
+	skaffer.send_message(last_chat_id, text = 'Что я могу: \n\n/tt - Получить полное расписание занятий\n/next - Какая же у меня следующая пара? \n/weather - Информация о погоде')
+
+# Функция отправляет в чат расписание занятий
+def timetable(last_chat_id):
+	with open(timetable.txt) as tt_file:
+		tt_text = tt_file.read()
+
+	skaffer.send_message(last_chat_id, 'Ваше расписание на второй семестр 1 курса:')
+	skaffer.send_message(last_chat_id, tt_text)
+
+# Функция отправляет в чат сообщение с информацией о текущей погоде
+def weather(last_chat_id):
 	city = "Minsk,BY"
 	city_id = 625144
 	appid = "0e3ef2e80ad4ea15b7ee3bd7c701569f"
 
 	try:
-	    weather_request = requests.get("http://api.openweathermap.org/data/2.5/weather",
-	                 params={'id': city_id, 'units': 'metric', 'lang': 'ru', 'APPID': appid})
-	    weather_data = weather_request.json()
+		weather_request = requests.get("http://api.openweathermap.org/data/2.5/weather",
+					params={'id': city_id, 'units': 'metric', 'lang': 'ru', 'APPID': appid})
+		weather_data = weather_request.json()
 
-	    weather_conditions = weather_data['weather'][0]['description']
-	    weather_temp = str(weather_data['main']['temp'])
+		weather_conditions = weather_data['weather'][0]['description']
+		weather_temp = str(weather_data['main']['temp'])
 
-	    weather_message = 'Сейчас за окном '
-	    weather_message += weather_temp
-	    weather_message += ' градусов, '
-	    weather_message += weather_conditions
+		weather_message = 'Сейчас за окном '
+		weather_message += weather_temp
+		weather_message += ' градусов, '
+		weather_message += weather_conditions
 
-	    skaffer.send_message(last_chat_id, weather_message)
+		skaffer.send_message(last_chat_id, weather_message)
 
-	except Exception as e:
-	    print("Exception while getting the weather", e)
-	    pass
+	except Exception as error_message:
+		print("Exception while getting the weather", error_message)
+		pass
 
-def next(last_chat_id): # Функция отправляет в чат сообщение с местом и временем следующей пары
+# Функция отправляет в чат сообщение с местом и временем следующей пары
+def next(last_chat_id):
 	current_time = list((str(datetime.datetime.now().time())).split(':'))
 	hours = int(current_time[0])
 	minutes = int(current_time[1])
@@ -86,8 +100,7 @@ def next(last_chat_id): # Функция отправляет в чат сооб
 
 				if pair_hour - hours <= min_hours:
 					if pair_hour - hours >= 0:
-						if pair_minute - minutes:
-
+						if pair_minute - minutes > 0:
 							next_pair = pair
 							min_hours = pair_hour - hours
 
@@ -116,16 +129,13 @@ def next(last_chat_id): # Функция отправляет в чат сооб
 
 			skaffer.send_message(last_chat_id, pair_message)
 
-def help(last_chat_id):
-	skaffer.send_message(last_chat_id, text = 'Что я могу: \n\n/tt - Получить полное расписание занятий\n/next - Какая же у меня следующая пара? \n/weather - Информация о погоде')
-
 skaffer = BotHandler(config.token) # Создание бота с заданным токеном
 
 def main():
-# 	port = int(os.environ.get(“PORT”, 5000))
 	new_offset = None
 
 	weather_dict = ['/weather', 'погода', 'прогноз']
+	tt_dict = ['/tt', '/timetable', 'расписание']
 
 	while True:
 		skaffer.get_updates(new_offset)
@@ -144,15 +154,17 @@ def main():
 				next(last_chat_id)
 			elif last_chat_text.lower() == '/help' or last_chat_text.lower() == 'помощь':
 				help(last_chat_id)
+			elif last_chat_text.lower() in tt_dict:
+				timetable(last_chat_id)
 
 			last_chat_message = '['
 			last_chat_message += last_chat_text
 			last_chat_message += ']'
-			print('User', last_chat_name, 'typed', last_chat_message)
+			print(datetime.datetime.now(), 'User', last_chat_name, 'typed', last_chat_message)
 
 			new_offset = last_update_id + 1
 
-if __name__ == '__main__':  
+if __name__ == '__main__':
 	try:
 		main()
 	except KeyboardInterrupt:
