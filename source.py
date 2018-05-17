@@ -86,11 +86,11 @@ def tomorrow_timetable(last_chat_id):
 		path += week_day
 		path += '.txt'
 
-		with open(path) as tt_today_file:
-			tt_today_text = tt_today_file.read()
+		with open(path) as tt_tomorrow_file:
+			tt_tomorrow_text = tt_tomorrow_file.read()
 
-		skaffer.send_message(last_chat_id, 'Ваше расписание на сегодня:')
-		skaffer.send_message(last_chat_id, tt_today_text)
+		skaffer.send_message(last_chat_id, 'Ваше расписание на завтра:')
+		skaffer.send_message(last_chat_id, tt_tomorrow_text)
 
 # Функция отправляет в чат сообщение с информацией о текущей погоде
 def weather(last_chat_id):
@@ -166,6 +166,10 @@ def next(last_chat_id):
 				pair_message += next_pair[3]
 
 				skaffer.send_message(last_chat_id, pair_message)
+
+				next_pair_time = next_pair[0].split(':')
+				if int(next_pair_time[0]) == 9:
+					weather(last_chat_id)
 
 		else:
 			pair_message = ''
