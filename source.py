@@ -200,7 +200,8 @@ def main():
 	tt_dict = ['/tt', 'tt', '/timetable', 'timetable', 'расписание']
 	tod_tt_dict = ['/tod', 'tod', 'сегодня', 'расписос']
 	tom_tt_dict = ['/tom', 'tom', 'завтра']
-	changelog_dict = ['/changelog', 'что нового', 'что нового?']
+	changelog_dict = ['/changelog', 'changelog', 'что нового', 'что нового?']
+	greet_dict = ['привет', 'дорова', 'дарова', 'йоу']
 
 	while True:
 		# Получение информации с сервера
@@ -230,6 +231,18 @@ def main():
 				tomorrow_timetable(last_chat_id)
 			elif last_chat_text.lower() in changelog_dict:
 				changelog(last_chat_id)
+			elif last_chat_text.lower() in greet_dict:
+				greet_msg = last_chat_text
+				greet_msg += ', '
+				greet_msg += last_chat_name
+				greet_msg += ' :)'
+				skaffer.send_message(last_chat_id, greet_msg)
+			else:
+				err_msg = 'Я тебя не понял, '
+				err_msg += last_chat_name
+				err_msg += ' :(\nИспользуй /help, чтобы узнать, что я умею'
+				skaffer.send_message(last_chat_id, err_msg)
+
 
 			last_chat_message = '['
 			last_chat_message += last_chat_text

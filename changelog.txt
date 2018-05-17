@@ -8,3 +8,5 @@ We added few commands to make our boy better:
 /start command works properly now and welcomes you by the name
 /next shows the weather if you use it before the first pair
 Now you can type all commands without '/' symbol
+Added an answer for unknown messages and commands
+Added few greeting answers for привет etc.
