@@ -148,7 +148,7 @@ def main():
 			last_chat_message += ']'
 			print('User', last_chat_name, 'typed', last_chat_message)
 
-		new_offset = last_update_id + 1
+			new_offset = last_update_id + 1
 
 if __name__ == '__main__':  
 	try:
