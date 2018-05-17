@@ -193,6 +193,7 @@ def main():
 	new_offset = None
 
 	# Словари для вызова комманд разными способами
+	start_dict = ['/start', 'start']
 	next_dict = ['/next', 'next', 'след', 'следующая', 'дальше']
 	help_dict = ['/help', 'help', 'помощь', 'памагити']
 	weather_dict = ['/weather', 'weather', 'погода', 'прогноз']
