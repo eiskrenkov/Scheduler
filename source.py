@@ -44,6 +44,13 @@ def start(last_chat_id, last_chat_name):
 def help(last_chat_id):
 	skaffer.send_message(last_chat_id, text = 'Что я могу:\n\n/tt - Получить полное расписание занятий\n/next - Какая же у меня следующая пара?\n/weather - Информация о погоде\n/tod - Расписание на сегодня\n/tom - Расписание на завтра')
 
+# Функция отправляет в чат список изменений в последней версии бота
+def changelog(last_chat_id):
+	with open('changelog.txt') as changelog_file:
+		changelog_text = changelog_file.read()
+
+	skaffer.send_message(last_chat_id, changelog_text)
+
 # Функция отправляет в чат все расписание занятий
 def timetable(last_chat_id):
 	with open('timetable.txt') as tt_file:
@@ -186,12 +193,13 @@ def main():
 	new_offset = None
 
 	# Словари для вызова комманд разными способами
-	next_dict = ['/next', 'след', 'следующая', 'дальше']
-	help_dict = ['/help', 'помощь', 'памагити']
-	weather_dict = ['/weather', 'погода', 'прогноз']
-	tt_dict = ['/tt', '/timetable', 'расписание']
-	tod_tt_dict = ['/tod', 'сегодня', 'расписос']
-	tom_tt_dict = ['/tom', 'завтра']
+	next_dict = ['/next', 'next', 'след', 'следующая', 'дальше']
+	help_dict = ['/help', 'help', 'помощь', 'памагити']
+	weather_dict = ['/weather', 'weather', 'погода', 'прогноз']
+	tt_dict = ['/tt', 'tt', '/timetable', 'timetable', 'расписание']
+	tod_tt_dict = ['/tod', 'tod', 'сегодня', 'расписос']
+	tom_tt_dict = ['/tom', 'tom', 'завтра']
+	changelod_dict = ['/changelog', 'что нового', 'что нового?']
 
 	while True:
 		# Получение информации с сервера
@@ -219,6 +227,8 @@ def main():
 				today_timetable(last_chat_id)
 			elif last_chat_text.lower() in tom_tt_dict:
 				tomorrow_timetable(last_chat_id)
+			elif last_chat_text.lower() in changelog_dict:
+				changelog(last_chat_id)
 
 			last_chat_message = '['
 			last_chat_message += last_chat_text

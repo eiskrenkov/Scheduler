@@ -1,0 +1,10 @@
+SkafferBot v0.1 Beta
+Created by MrBlazOn & Dimas1337
+Last update date: 2018-05-17 15:39:03.428219
+
+We added few commands to make our boy better:
+/tod - shows your today's timetable
+/tom - shows your tommorow's timetable
+/start command works properly now and welcomes you by the name
+/next shows the weather if you use it before the first pair
+Now you can type all commands without '/' symbol
