@@ -4,6 +4,8 @@ import datetime
 import time
 import os
 
+# Git checking
+
 class BotHandler:
  
     def __init__(self, token):
