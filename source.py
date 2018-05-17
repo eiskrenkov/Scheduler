@@ -59,7 +59,7 @@ def today_timetable(last_chat_id):
 
 	path = 'week_days/'
 	path += week_day
-	week_day += '.txt'
+	path += '.txt'
 
 	with open(path) as tt_today_file:
 		tt_today_text = tt_today_file.read()
@@ -84,7 +84,7 @@ def tomorrow_timetable(last_chat_id):
 
 		path = 'week_days/'
 		path += week_day
-		week_day += '.txt'
+		path += '.txt'
 
 		with open(path) as tt_today_file:
 			tt_today_text = tt_today_file.read()
@@ -126,10 +126,10 @@ def next(last_chat_id):
 	day = list(time.ctime().split())
 	week_day = day[0]
 	# week_day = 'Tue'
-	week_day += '.txt'
 
 	path = 'week_days/'
 	path += week_day
+	path += '.txt'
 
 	with open(path) as week_day_file:
 		pair = list(str(i) for i in week_day_file.readline().strip().split())
