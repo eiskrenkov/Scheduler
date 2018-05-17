@@ -214,7 +214,7 @@ def main():
 			last_chat_id = last_update['message']['chat']['id']
 			last_chat_name = last_update['message']['chat']['first_name']
 
-			if last_chat_text.lower() == '/start':
+			if last_chat_text.lower() in start_dict:
 				start(last_chat_id, last_chat_name)
 			elif last_chat_text.lower() in weather_dict:
 				weather(last_chat_id)
