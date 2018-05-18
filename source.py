@@ -127,7 +127,7 @@ def weather(last_chat_id):
 # Функция отправляет в чат сообщение с местом и временем следующей пары
 def next(last_chat_id):
 	current_time = list((str(datetime.datetime.now().time())).split(':'))
-	hours = int(current_time[0])
+	hours = int(current_time[0]) + 3
 	minutes = int(current_time[1])
 
 	day = list(time.ctime().split())
@@ -160,7 +160,12 @@ def next(last_chat_id):
 
 				if pair_hour - hours <= 1 and pair_hour - hours >= 0:
 					print(pair_hour, hours, pair_minute, minutes)
-					if pair_minute - minutes > 0:
+
+					if pair_hour - hours == 0:
+						if pair_minute - minutes > 0:
+							next_pair = pair
+							break
+					else:
 						next_pair = pair
 						break
 
