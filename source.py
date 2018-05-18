@@ -150,12 +150,18 @@ def next(last_chat_id):
 
 				pair_hour = int(pair_time[0])
 				pair_minute = int(pair_time[1])
-
+				"""
 				if pair_hour - hours <= min_hours:
 					if pair_hour - hours >= 0:
 						if pair_minute - minutes > 0:
 							next_pair = pair
 							min_hours = pair_hour - hours
+				"""
+
+				if pair_hour - hours < 1 and pair_hour - hours >= 0:
+					if pair_minute - minutes > 0:
+						next_pair = pair
+						break
 
 				pair = list(str(i) for i in week_day_file.readline().strip().split())
 
