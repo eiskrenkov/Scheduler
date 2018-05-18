@@ -159,6 +159,7 @@ def next(last_chat_id):
 				"""
 
 				if pair_hour - hours <= 1 and pair_hour - hours >= 0:
+					print(pair_hour, hour, pair_minute, minutes)
 					if pair_minute - minutes > 0:
 						next_pair = pair
 						break
