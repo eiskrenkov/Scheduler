@@ -14,7 +14,6 @@ import time
 import os
 
 # Создание бота с заданным токеном
-# skaffer = BotHandler(config.token)
 skaffer = handler(config.token)
 
 def main():
@@ -33,8 +32,8 @@ def main():
 
 	while True:
 		# Получение информации с сервера
-		skaffer.handler.get_updates(new_offset)
-		last_update = skaffer.handler.get_last_update()
+		skaffer.get_updates(new_offset)
+		last_update = skaffer.get_last_update()
 
 		# При получении непустого ответа с сервера
 		if last_update != {}:
@@ -69,7 +68,7 @@ def main():
 				err_msg = 'Я тебя не понял, '
 				err_msg += last_chat_name
 				err_msg += ' :(\nИспользуй /help, чтобы узнать, что я умею'
-				skaffer.handler.send_message(last_chat_id, err_msg)
+				skaffer.send_message(last_chat_id, err_msg)
 
 
 			last_chat_message = '['
