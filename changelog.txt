@@ -1,7 +1,9 @@
-SkafferBot v0.1 Beta
+SkafferBot v0.2 Beta
 Created by MrBlazOn & Dimas1337
-Last update date: 2018-05-17 15:39:03.428219
+Last update date: 2018-05-19 13:27:05.148538
 
+v0.1
+-----------------------------------------------------------------
 We added few commands to make our boy better:
 /tod - shows your today's timetable
 /tom - shows your tommorow's timetable
@@ -10,3 +12,9 @@ We added few commands to make our boy better:
 Now you can type all commands without '/' symbol
 Added an answer for unknown messages and commands
 Added few greeting answers for привет etc.
+-----------------------------------------------------------------
+
+v0.2
+-----------------------------------------------------------------
+Changed the inner project structure
+-----------------------------------------------------------------
