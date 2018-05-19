@@ -6,6 +6,9 @@ import datetime
 import time
 import os
 
+# Импорт локального файла с настройками
+import config
+
 #Импорт класса для обработки изменений на сервере
 from bothandler import BotHandler as handler
 

@@ -1,14 +1,14 @@
 # The main source code file
 
-# Импорт локальных файлов с настройками и коммандами
-import config
-import commands
-
 # Импорт системных модулей
 import requests
 import datetime
 import time
 import os
+
+# Импорт локальных файлов с настройками и коммандами
+import config
+import commands
 
 #Импорт класса для обработки изменений на сервере
 from bothandler import BotHandler as handler
