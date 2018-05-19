@@ -9,6 +9,9 @@ import os
 #Импорт класса для обработки изменений на сервере
 from bothandler import BotHandler as handler
 
+# Создание бота с заданным токеном
+skaffer = handler(config.token)
+
 def start(last_chat_id, last_chat_name):
 	greet_msg = 'Привет, '
 	greet_msg += last_chat_name

@@ -4,14 +4,14 @@
 import config
 import commands
 
-#Импорт класса для обработки изменений на сервере
-from bothandler import BotHandler as handler
-
 # Импорт системных модулей
 import requests
 import datetime
 import time
 import os
+
+#Импорт класса для обработки изменений на сервере
+from bothandler import BotHandler as handler
 
 # Создание бота с заданным токеном
 skaffer = handler(config.token)
