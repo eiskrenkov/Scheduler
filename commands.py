@@ -1,34 +1,39 @@
 # This file contains all the commands that could be processed by Skaffer
 
+# Импорт системных модулей
 import requests
 import datetime
 import time
 import os
 
+#Импорт класса для обработки изменений на сервере
+import bothandler
+handler = bothandler.BotHandler()
+
 def start(last_chat_id, last_chat_name):
 	greet_msg = 'Привет, '
 	greet_msg += last_chat_name
 	greet_msg += '! Меня зовут Skaffer и я полностью в твоем распоряжении :)\nP.S Используй /help, чтобы узнать, что я умею'
-	skaffer.send_message(last_chat_id, greet_msg)
+	skaffer.handler.send_message(last_chat_id, greet_msg)
 
 # Функция отправляет в чат сообщение с полезной для пользователя информацией
 def help(last_chat_id):
-	skaffer.send_message(last_chat_id, text = 'Что я могу:\n\n/tt - Получить полное расписание занятий\n/next - Какая же у меня следующая пара?\n/weather - Информация о погоде\n/tod - Расписание на сегодня\n/tom - Расписание на завтра')
+	skaffer.handler.send_message(last_chat_id, text = 'Что я могу:\n\n/tt - Получить полное расписание занятий\n/next - Какая же у меня следующая пара?\n/weather - Информация о погоде\n/tod - Расписание на сегодня\n/tom - Расписание на завтра')
 
 # Функция отправляет в чат список изменений в последней версии бота
 def changelog(last_chat_id):
 	with open('changelog.txt') as changelog_file:
 		changelog_text = changelog_file.read()
 
-	skaffer.send_message(last_chat_id, changelog_text)
+	skaffer.handler.send_message(last_chat_id, changelog_text)
 
 # Функция отправляет в чат все расписание занятий
 def timetable(last_chat_id):
 	with open('database/timetable.txt') as tt_file:
 		tt_text = tt_file.read()
 
-	skaffer.send_message(last_chat_id, 'Ваше расписание на второй семестр 1 курса:')
-	skaffer.send_message(last_chat_id, tt_text)
+	skaffer.handler.send_message(last_chat_id, 'Ваше расписание на второй семестр 1 курса:')
+	skaffer.handler.send_message(last_chat_id, tt_text)
 
 # Функция отправляет в чат расписание занятий на сегодня
 def today_timetable(last_chat_id):
@@ -43,10 +48,10 @@ def today_timetable(last_chat_id):
 		tt_today_text = tt_today_file.read()
 
 	if week_day == 'Sat' or week_day == 'Sun':
-		skaffer.send_message(last_chat_id, 'Сегодня выходной, какая учеба?')
+		skaffer.handler.send_message(last_chat_id, 'Сегодня выходной, какая учеба?')
 	else:
-		skaffer.send_message(last_chat_id, 'Ваше расписание на сегодня:')
-		skaffer.send_message(last_chat_id, tt_today_text)
+		skaffer.handler.send_message(last_chat_id, 'Ваше расписание на сегодня:')
+		skaffer.handler.send_message(last_chat_id, tt_today_text)
 
 # Функция отправляет в чат расписание занятий на завтра
 def tomorrow_timetable(last_chat_id):
@@ -55,7 +60,7 @@ def tomorrow_timetable(last_chat_id):
 	week_day = day[0]
 
 	if week_day == 'Fri' or week_day == 'Sat':
-		skaffer.send_message(last_chat_id, 'Завтра выходной, какая учеба?')
+		skaffer.handler.send_message(last_chat_id, 'Завтра выходной, какая учеба?')
 	else:
 		if week_day == 'Sun':
 			week_day = 'Mon'
@@ -70,8 +75,8 @@ def tomorrow_timetable(last_chat_id):
 		with open(path) as tt_tomorrow_file:
 			tt_tomorrow_text = tt_tomorrow_file.read()
 
-		skaffer.send_message(last_chat_id, 'Ваше расписание на завтра:')
-		skaffer.send_message(last_chat_id, tt_tomorrow_text)
+		skaffer.handler.send_message(last_chat_id, 'Ваше расписание на завтра:')
+		skaffer.handler.send_message(last_chat_id, tt_tomorrow_text)
 
 # Функция отправляет в чат сообщение с информацией о текущей погоде
 def weather(last_chat_id):
@@ -92,7 +97,7 @@ def weather(last_chat_id):
 		weather_message += ' градусов, '
 		weather_message += weather_conditions
 
-		skaffer.send_message(last_chat_id, weather_message)
+		skaffer.handler.send_message(last_chat_id, weather_message)
 
 	except Exception as error_message:
 		print("Exception while getting the weather", error_message)
@@ -139,7 +144,7 @@ def next(last_chat_id):
 				pair = list(str(i) for i in week_day_file.readline().strip().split())
 
 			if next_pair == []:
-				skaffer.send_message(last_chat_id, 'На сегодня все пары закончились')
+				skaffer.handler.send_message(last_chat_id, 'На сегодня все пары закончились')
 			else:
 				pair_message = 'Следующей парой у вас '
 				pair_message += next_pair[2]
@@ -151,7 +156,7 @@ def next(last_chat_id):
 				pair_message += ' в кабинете '
 				pair_message += next_pair[3]
 
-				skaffer.send_message(last_chat_id, pair_message)
+				skaffer.handler.send_message(last_chat_id, pair_message)
 
 				next_pair_time = next_pair[0].split(':')
 				if int(next_pair_time[0]) == 9:
@@ -163,4 +168,4 @@ def next(last_chat_id):
 				pair_message += word
 				pair_message += ' '
 
-			skaffer.send_message(last_chat_id, pair_message)
+			skaffer.handler.send_message(last_chat_id, pair_message)
