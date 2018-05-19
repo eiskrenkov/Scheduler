@@ -7,8 +7,7 @@ import time
 import os
 
 #Импорт класса для обработки изменений на сервере
-import bothandler
-handler = bothandler.BotHandler()
+from bothandler import BotHandler as handler
 
 def start(last_chat_id, last_chat_name):
 	greet_msg = 'Привет, '
