@@ -177,7 +177,7 @@ def next(last_chat_id):
 
 def bus47(last_chat_id):
 	current_time = list((str(datetime.datetime.now().time())).split(':'))
-	hour = int(current_time[0])
+	hour = int(current_time[0]) + 3
 	minute = int(current_time[1])
 
 	day_bus = list(time.ctime().split())
@@ -209,7 +209,7 @@ def bus47(last_chat_id):
 				time_leave = list(str(i) for i in bus_timetable.readline().strip().split(':'))
 
 			if time_bus == []:
-				skaffer.send_message(last_chat_id, 'Автобус больше не приедет')
+				skaffer.send_message(last_chat_id, 'Автобус окончил движение')
 			else:
 				message_time = 'Следующий автобус в '
 				message_time += time_bus[0]
