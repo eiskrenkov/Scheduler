@@ -59,8 +59,8 @@ def main():
 				commands.tomorrow_timetable(last_chat_id)
 			elif last_chat_text.lower() in changelog_dict:
 				commands.changelog(last_chat_id)
-			elif last_chat_text.lower() in bus47_dict:
-				commands.bus47(last_chat_id)
+			# elif last_chat_text.lower() in bus47_dict:
+			# 	commands.bus47(last_chat_id)
 			elif last_chat_text.lower() in greet_dict:
 				greet_msg = last_chat_text
 				greet_msg += ', '
