@@ -185,7 +185,7 @@ def bus47(last_chat_id):
 
 	if day_now != 'Sat' and day_now != 'Sun':
 		with open('database/47_bus_timetable.txt') as bus_timetable:
-			time_leave = list(str(i) for i in day_now_time.readline().strip().split(':'))
+			time_leave = list(str(i) for i in bus_timetable.readline().strip().split(':'))
 			time_bus = []
 		
 			while time_leave != ['']:
@@ -206,7 +206,7 @@ def bus47(last_chat_id):
 						time_bus = time_leave
 						break
 
-					time_leave = list(str(i) for i in day_now_time.readline().strip().split(':'))
+					time_leave = list(str(i) for i in bus_timetable.readline().strip().split(':'))
 
 				if time_bus == []:
 					skaffer.send_message(last_chat_id, 'Автобус больше не приедет')
