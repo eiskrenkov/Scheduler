@@ -23,7 +23,7 @@ def start(last_chat_id, last_chat_name):
 
 # Функция отправляет в чат сообщение с полезной для пользователя информацией
 def help(last_chat_id):
-	skaffer.send_message(last_chat_id, text = 'Что я могу:\n\n/tt - Получить полное расписание занятий\n/next - Какая же у меня следующая пара?\n/weather - Информация о погоде\n/tod - Расписание на сегодня\n/tom - Расписание на завтра')
+	skaffer.send_message(last_chat_id, text = 'Что я могу:\n\n/tt - Получить полное расписание занятий\n/next - Какая же у меня следующая пара?\n/weather - Информация о погоде\n/tod - Расписание на сегодня\n/tom - Расписание на завтра\n/bus47 - Время прибытия 47-го автобуса на остановку "Курчатова"')
 
 # Функция отправляет в чат список изменений в последней версии бота
 def changelog(last_chat_id):
@@ -184,7 +184,7 @@ def bus47(last_chat_id):
 	day_now = day_bus[0]
 
 	if day_now != 'Sat' and day_now != 'Sun':
-		with open('database/47_bus_timetable') as bus_timetable:
+		with open('database/47_bus_timetable.txt') as bus_timetable:
 			time_leave = list(str(i) for i in day_now_time.readline().strip().split(':'))
 			time_bus = []
 		
