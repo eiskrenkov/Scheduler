@@ -29,6 +29,7 @@ def main():
 	tom_tt_dict = ['/tom', 'tom', 'завтра']
 	changelog_dict = ['/changelog', 'changelog', 'что нового', 'что нового?']
 	greet_dict = ['привет', 'дорова', 'дарова', 'йоу']
+	bus47_dict = ['/bus47', 'bus47', '47']
 
 	while True:
 		# Получение информации с сервера
@@ -36,7 +37,7 @@ def main():
 		last_update = skaffer.get_last_update()
 
 		# При получении непустого ответа с сервера
-		if last_update != {}:
+		if last_update != []:
 			last_update_id = last_update['update_id']
 			last_chat_text = last_update['message']['text']
 			last_chat_id = last_update['message']['chat']['id']
@@ -58,6 +59,8 @@ def main():
 				commands.tomorrow_timetable(last_chat_id)
 			elif last_chat_text.lower() in changelog_dict:
 				commands.changelog(last_chat_id)
+			elif last_chat_text.lower() in bus47_dict:
+				commands.bus47(last_chat_id)
 			elif last_chat_text.lower() in greet_dict:
 				greet_msg = last_chat_text
 				greet_msg += ', '
