@@ -208,14 +208,14 @@ def bus47(last_chat_id):
 
 				time_leave = list(str(i) for i in bus_timetable.readline().strip().split(':'))
 
-				if time_bus == []:
-					skaffer.send_message(last_chat_id, 'Автобус больше не приедет')
-				else:
-					message_time = 'Следующий автобус в '
-					message_time += time_bus[0]
-					message_time += ':'
-					message_time += time_bus[1]
-					message_time += ' на остановке "Курчатова"'
-					skaffer.send_message(last_chat_id, message_time)
+			if time_bus == []:
+				skaffer.send_message(last_chat_id, 'Автобус больше не приедет')
+			else:
+				message_time = 'Следующий автобус в '
+				message_time += time_bus[0]
+				message_time += ':'
+				message_time += time_bus[1]
+				message_time += ' на остановке "Курчатова"'
+				skaffer.send_message(last_chat_id, message_time)
 	else:
 		skaffer.send_message(last_chat_id, 'По выходным 47с автобус не ходит')
