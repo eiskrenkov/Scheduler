@@ -23,7 +23,10 @@ def start(last_chat_id, last_chat_name):
 
 # Функция отправляет в чат сообщение с полезной для пользователя информацией
 def help(last_chat_id):
-	skaffer.send_message(last_chat_id, text = 'Что я могу:\n\n/tt - Получить полное расписание занятий\n/next - Какая же у меня следующая пара?\n/weather - Информация о погоде\n/tod - Расписание на сегодня\n/tom - Расписание на завтра\n/bus47 - Время прибытия 47-го автобуса на остановку "Курчатова"')
+	skaffer.send_message(last_chat_id, text = 'Что я могу:\n\n/tt - Получить полное расписание занятий\n/next - Какая же у меня следующая пара?\n/weather - Информация о погоде\n/tod - Расписание на сегодня\n/tom - Расписание на завтра\n/bus47 - Время прибытия автобуса 47с на остановку "Курчатова"\n\nP.S Вы можете использовать все предложенные команды без символа"/". Просмотреть весь список альтернативных команд - /alt')
+
+def alt(last_chat_id):
+	skaffer.send_message(last_chat_id, 'Вы можете использовать все команды несколькими способами, например:\n\n/help - help, помощь, памагити\n/next - next, след, следующая, дальше\n/weather - weather, прогноз, погода\n/tt - tt, timetable, расписание\n/tod - tod, сегодня, пары\n/tom - tom, завтра\n/bus47 - bus47, 47')
 
 # Функция отправляет в чат список изменений в последней версии бота
 def changelog(last_chat_id):
@@ -199,17 +202,16 @@ def bus47(last_chat_id):
 				if hour_table - hour == 0:
 					if minute_table - minute <= min_minute and minute_table - minute >= 0:
 						time_bus = time_leave
-						
 						min_minute = minute_table - minute
 						break
-					elif hour_table - hour >= 0:
-						time_bus = time_leave
-						break
+				elif hour_table - hour >= 0:
+					time_bus = time_leave
+					break
 
 				time_leave = list(str(i) for i in bus_timetable.readline().strip().split(':'))
 
 			if time_bus == []:
-				skaffer.send_message(last_chat_id, 'Автобус окончил движение')
+				skaffer.send_message(last_chat_id, 'На сегодня втобус 47с окончил движение')
 			else:
 				message_time = 'Следующий автобус в '
 				message_time += time_bus[0]
@@ -218,4 +220,4 @@ def bus47(last_chat_id):
 				message_time += ' на остановке "Курчатова"'
 				skaffer.send_message(last_chat_id, message_time)
 	else:
-		skaffer.send_message(last_chat_id, 'По выходным 47с автобус не ходит')
+		skaffer.send_message(last_chat_id, 'По выходным автобус 47с не ходит')

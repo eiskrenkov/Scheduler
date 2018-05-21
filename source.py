@@ -25,11 +25,12 @@ def main():
 	help_dict = ['/help', 'help', 'помощь', 'памагити']
 	weather_dict = ['/weather', 'weather', 'погода', 'прогноз']
 	tt_dict = ['/tt', 'tt', '/timetable', 'timetable', 'расписание']
-	tod_tt_dict = ['/tod', 'tod', 'сегодня', 'расписос']
+	tod_tt_dict = ['/tod', 'tod', 'сегодня', 'пары']
 	tom_tt_dict = ['/tom', 'tom', 'завтра']
 	changelog_dict = ['/changelog', 'changelog', 'что нового', 'что нового?']
-	greet_dict = ['привет', 'дорова', 'дарова', 'йоу']
+	greet_dict = ['привет', 'дорова', 'дарова', 'здарова', 'йоу']
 	bus47_dict = ['/bus47', 'bus47', '47']
+	alt_dict = ['/alt', 'alt']
 
 	while True:
 		# Получение информации с сервера
@@ -65,6 +66,8 @@ def main():
 				commands.changelog(last_chat_id)
 			elif last_chat_text.lower() in bus47_dict:
 				commands.bus47(last_chat_id)
+			elif last_chat_text.lower() in alt_dict:
+				commands.alt(last_chat_id)
 			elif last_chat_text.lower() in greet_dict:
 				greet_msg = last_chat_text
 				greet_msg += ', '
