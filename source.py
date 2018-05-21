@@ -36,6 +36,8 @@ def main():
 		skaffer.get_updates(new_offset)
 		last_update = skaffer.get_last_update()
 
+		print(last_update)
+
 		# При получении непустого ответа с сервера
 		if last_update != []:
 			last_update_id = last_update['update_id']
