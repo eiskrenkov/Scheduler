@@ -1,6 +1,6 @@
-SkafferBot v0.2 Beta
+SkafferBot v0.3 Beta
 Created by MrBlazOn & Dimas1337
-Last update date: 2018-05-19 13:27:05.148538
+Last update date: 2018-05-21 19:48:05.148538
 
 v0.1
 -----------------------------------------------------------------
@@ -17,4 +17,10 @@ Added few greeting answers for привет etc.
 v0.2
 -----------------------------------------------------------------
 Changed the inner project structure
+-----------------------------------------------------------------
+
+v0.3
+-----------------------------------------------------------------
+/bus47 function added
+/alt function added (shows alternative inputs for each command)
 -----------------------------------------------------------------
