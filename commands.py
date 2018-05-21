@@ -206,7 +206,7 @@ def bus47(last_chat_id):
 						time_bus = time_leave
 						break
 
-					time_leave = list(str(i) for i in bus_timetable.readline().strip().split(':'))
+				time_leave = list(str(i) for i in bus_timetable.readline().strip().split(':'))
 
 				if time_bus == []:
 					skaffer.send_message(last_chat_id, 'Автобус больше не приедет')

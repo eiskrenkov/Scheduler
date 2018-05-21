@@ -38,10 +38,14 @@ def main():
 
 		# При получении непустого ответа с сервера
 		if last_update != {}:
-			last_update_id = last_update['update_id']
-			last_chat_text = last_update['message']['text']
-			last_chat_id = last_update['message']['chat']['id']
-			last_chat_name = last_update['message']['chat']['first_name']
+
+			try:
+				last_update_id = last_update['update_id']
+				last_chat_text = last_update['message']['text']
+				last_chat_id = last_update['message']['chat']['id']
+				last_chat_name = last_update['message']['chat']['first_name']
+			except KeyError as key_error_message:
+				print("Exception while obtaining data from server", key_error_message)
 
 			if last_chat_text.lower() in start_dict:
 				commands.start(last_chat_id, last_chat_name)
@@ -59,8 +63,8 @@ def main():
 				commands.tomorrow_timetable(last_chat_id)
 			elif last_chat_text.lower() in changelog_dict:
 				commands.changelog(last_chat_id)
-			# elif last_chat_text.lower() in bus47_dict:
-			# 	commands.bus47(last_chat_id)
+			elif last_chat_text.lower() in bus47_dict:
+				commands.bus47(last_chat_id)
 			elif last_chat_text.lower() in greet_dict:
 				greet_msg = last_chat_text
 				greet_msg += ', '
