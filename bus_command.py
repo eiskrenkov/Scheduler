@@ -5,6 +5,8 @@ import time
 import telebot
 from telebot import types
 
+skaffer = handler(config.token)
+
 def bus(last_chat_id):
 	keyboard = types.ReplyKeyboardMarkup(resize_keyboard = True)
 	keyboard.add(*[types.KeyboardButton(name) for name in ['Курчатова', 'Факультет Радиофизики']])
