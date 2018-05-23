@@ -130,7 +130,6 @@ def kurch(last_chat_id):
 				message_time += ':'
 				message_time += time_bus[1]
 				skaffer.send_message(last_chat_id, message_time)
-	else:
-		skaffer.send_message(last_chat_id, 'По выходным автобус 96 не ходит')
 
 def raf(last_chat_id):
+	print('raf')
