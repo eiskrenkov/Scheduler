@@ -5,7 +5,7 @@ import requests
 import datetime
 import time
 import os
-from telebot import ReplyKeyboardMarkup, KeyboardButton, add, types
+import telebot
 
 # Импорт локального файла с настройками
 import config
