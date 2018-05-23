@@ -48,7 +48,7 @@ def kurch(last_chat_id):
 				time_leave = list(str(i) for i in bus_timetable.readline().strip().split(':'))
 
 			if time_bus == []:
-				skaffer.send_message(last_chat_id, 'На сегодня втобус 47с окончил движение')
+				skaffer.send_message(last_chat_id, 'На сегодня втобус 47с окончил движение', remove_keyboard)
 			else:
 				message_time = 'Следующий автобус 47с прибудет в '
 				message_time += time_bus[0]
