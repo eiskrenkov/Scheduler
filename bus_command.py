@@ -19,12 +19,12 @@ def bus(last_chat_id):
 
 @skaffer.callback_query_handler(func=lambda call: True)
 def callback_inline(call):
-    # Если сообщение из чата с ботом
-    if call.inline_message_id:
-        if call.data == "kurch":
-            kurch(last_chat_id)
-        elif call.data == "raf":
-        	raf(last_chat_id)
+	# Если сообщение из чата с ботом
+	if call.inline_message_id:
+		if call.data == "kurch":
+			kurch(last_chat_id)
+		elif call.data == "raf":
+			raf(last_chat_id)
 
 def kurch(last_chat_id):
 	current_time = list((str(datetime.datetime.now().time())).split(':'))
