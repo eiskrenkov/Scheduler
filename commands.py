@@ -6,7 +6,7 @@ import datetime
 import time
 import os
 
-import telebot
+# import telebot
 from telebot import types
 
 # Импорт локального файла с настройками
