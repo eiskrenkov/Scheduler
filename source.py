@@ -9,7 +9,7 @@ import os
 # Импорт локальных файлов с настройками и коммандами
 import config
 import commands
-import bus
+import bus_command
 
 #Импорт класса для обработки изменений на сервере
 from bothandler import BotHandler as handler
@@ -66,7 +66,7 @@ def main():
 			elif last_chat_text.lower() in changelog_dict:
 				commands.changelog(last_chat_id)
 			elif last_chat_text.lower() in bus47_dict:
-				commands.bus(last_chat_id)
+				bus_command.bus(last_chat_id)
 			elif last_chat_text.lower() in alt_dict:
 				commands.alt(last_chat_id)
 			elif last_chat_text.lower() in greet_dict:
