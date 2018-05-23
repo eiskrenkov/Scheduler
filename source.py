@@ -67,10 +67,6 @@ def main():
 				commands.changelog(last_chat_id)
 			elif last_chat_text.lower() in bus47_dict:
 				bus_command.bus(last_chat_id)
-			elif last_chat_text.lower() == 'Курчатова':
-				bus_command.kurch(last_chat_id)
-			elif last_chat_text.lower() == 'Факультет Радиофизики':
-				bus_command.raf(last_chat_id)
 			elif last_chat_text.lower() in alt_dict:
 				commands.alt(last_chat_id)
 			elif last_chat_text.lower() in greet_dict:
