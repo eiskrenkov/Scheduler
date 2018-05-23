@@ -54,9 +54,9 @@ def kurch(last_chat_id):
 				message_time += time_bus[0]
 				message_time += ':'
 				message_time += time_bus[1]
-				skaffer.send_message(last_chat_id, message_time)
+				skaffer.send_message(last_chat_id, message_time, reply_markup = types.ReplyKeyboardRemove())
 	else:
-		skaffer.send_message(last_chat_id, 'По выходным автобус 47с не ходит')
+		skaffer.send_message(last_chat_id, 'По выходным автобус 47с не ходит', reply_markup = types.ReplyKeyboardRemove())
 
 	if day_now != 'Sat' and day_now != 'Sun':
 		with open('database/buses/96_weekdays.txt') as bus_timetable:
@@ -83,13 +83,13 @@ def kurch(last_chat_id):
 				time_leave = list(str(i) for i in bus_timetable.readline().strip().split(':'))
 
 			if time_bus == []:
-				skaffer.send_message(last_chat_id, 'На сегодня втобус 96 окончил движение')
+				skaffer.send_message(last_chat_id, 'На сегодня втобус 96 окончил движение', reply_markup = types.ReplyKeyboardRemove())
 			else:
 				message_time = 'Следующий автобус 96 прибудет в '
 				message_time += time_bus[0]
 				message_time += ':'
 				message_time += time_bus[1]
-				skaffer.send_message(last_chat_id, message_time)
+				skaffer.send_message(last_chat_id, message_time, reply_markup = types.ReplyKeyboardRemove())
 	else:
 		with open('database/buses/96_weekends.txt') as bus_timetable:
 			time_leave = list(str(i) for i in bus_timetable.readline().strip().split(':'))
@@ -115,13 +115,13 @@ def kurch(last_chat_id):
 				time_leave = list(str(i) for i in bus_timetable.readline().strip().split(':'))
 
 			if time_bus == []:
-				skaffer.send_message(last_chat_id, 'На сегодня втобус 96 окончил движение')
+				skaffer.send_message(last_chat_id, 'На сегодня втобус 96 окончил движение', reply_markup = types.ReplyKeyboardRemove())
 			else:
 				message_time = 'Следующий автобус 96 прибудет в '
 				message_time += time_bus[0]
 				message_time += ':'
 				message_time += time_bus[1]
-				skaffer.send_message(last_chat_id, message_time)
+				skaffer.send_message(last_chat_id, message_time, reply_markup = types.ReplyKeyboardRemove())
 
 def raf(last_chat_id):
 	print('raf')

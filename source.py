@@ -70,7 +70,8 @@ def main():
 			elif last_chat_text.lower() == 'курчатова':
 				bus_command.kurch(last_chat_id)
 			elif last_chat_text.lower() == 'факультет радиофизики':
-				bus_command.raf(last_chat_id)
+				# bus_command.raf(last_chat_id)
+				skaffer.send_message(last_chat_id, 'Данная функция на данный момент в разработке :(')
 			elif last_chat_text.lower() in alt_dict:
 				commands.alt(last_chat_id)
 			elif last_chat_text.lower() in greet_dict:
