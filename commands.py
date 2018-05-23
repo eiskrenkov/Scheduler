@@ -8,6 +8,7 @@ import os
 
 # import telebot
 from telebot import types
+from telebot import send_message as send_keyboard_message
 
 # Импорт локального файла с настройками
 import config
@@ -184,7 +185,7 @@ def next(last_chat_id):
 def bus(last_chat_id):
 	keyboard = types.ReplyKeyboardMarkup(resize_keyboard = True)
 	keyboard.add(*[types.KeyboardButton(name) for name in ['Курчатова', 'Факультет Радиофизики']])
-	answer = skaffer.send_message(last_chat_id, 'Время прибытия ближайшего автобуса к какой остановке вам нужно?', reply_markup = keyboard)
+	answer = skaffer.send_keyboard_message(last_chat_id, 'Время прибытия ближайшего автобуса к какой остановке вам нужно?', reply_markup = keyboard)
 
 	print(answer)
 
