@@ -11,7 +11,7 @@ skaffer = telebot.TeleBot(config.token)
 
 def bus(last_chat_id):
 	keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-	keyboard.add(*[types.KeyboardButton(name) for button in ['Курчатова', 'Факультет Радиофизики']])
+	keyboard.add(*[types.KeyboardButton(button) for button in ['Курчатова', 'Факультет Радиофизики']])
 	skaffer.send_message(last_chat_id, 'Время прибытия ближайшего автобуса к какой остановке вам нужно?', reply_markup = keyboard)
 
 def kurch(last_chat_id):
