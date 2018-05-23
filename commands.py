@@ -5,6 +5,7 @@ import requests
 import datetime
 import time
 import os
+from telebot import ReplyKeyboardMarkup, KeyboardButton, add, types
 
 # Импорт локального файла с настройками
 import config
@@ -48,7 +49,7 @@ def today_timetable(last_chat_id):
 	day = list(time.ctime().split())
 	week_day = day[0]
 
-	path = 'database/'
+	path = 'database/days/'
 	path += week_day
 	path += '.txt'
 
@@ -76,7 +77,7 @@ def tomorrow_timetable(last_chat_id):
 			week_day_number = week_days_list.index(week_day)
 			week_day = week_days_list[week_day_number + 1]
 
-		path = 'database/'
+		path = 'database/days'
 		path += week_day
 		path += '.txt'
 
@@ -121,7 +122,7 @@ def next(last_chat_id):
 	week_day = day[0]
 	# week_day = 'Tue'
 
-	path = 'database/'
+	path = 'database/days/'
 	path += week_day
 	path += '.txt'
 
@@ -178,7 +179,13 @@ def next(last_chat_id):
 
 			skaffer.send_message(last_chat_id, pair_message)
 
-def bus47(last_chat_id):
+def bus(last_chat_id):
+	keyboard = types.ReplyKeyboardMarkup(resize_keyboard = True)
+	keyboard.add(*[types.KeyboardButton(name) for name in ['Курчатова', 'Факультет Радиофизики']])
+	answer = skaffer.send_message(last_chat_id, 'Время прибытия ближайшего автобуса к какой остановке вам нужно?', reply_markup = keyboard)
+
+	print(answer)
+
 	current_time = list((str(datetime.datetime.now().time())).split(':'))
 	hour = int(current_time[0]) + 3
 	minute = int(current_time[1])
