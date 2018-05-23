@@ -16,7 +16,7 @@ def bus(last_chat_id):
 	callback_button = types.InlineKeyboardButton(text="Факультет Радиофизики", callback_data="raf")
 	skaffer.send_message(last_chat_id, 'Время прибытия ближайшего автобуса к какой остановке вам нужно?', reply_markup = keyboard)
 
-@bot.callback_query_handler(func=lambda call: True)
+@skaffer.callback_query_handler(func=lambda call: True)
 def callback_inline(call):
     # Если сообщение из чата с ботом
     if call.inline_message_id:
