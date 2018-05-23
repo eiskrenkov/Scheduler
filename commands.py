@@ -5,7 +5,9 @@ import requests
 import datetime
 import time
 import os
+
 import telebot
+from telebot import types
 
 # Импорт локального файла с настройками
 import config
