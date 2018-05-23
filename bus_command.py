@@ -10,18 +10,18 @@ from telebot import types
 skaffer = telebot.TeleBot(config.token)
 
 def bus(last_chat_id):
-	keyboard = types.ReplyKeyboardMarkup(resize_keyboard = True)
-	keyboard.add(*[types.KeyboardButton(name) for name in ['Курчатова', 'Факультет Радиофизики']])
-	answer = skaffer.send_message(last_chat_id, 'Время прибытия ближайшего автобуса к какой остановке вам нужно?', reply_markup = keyboard)
+	keyboard = types.InlineKeyboardMarkup()
+	callback_button = types.InlineKeyboardButton(text="Курчатова", callback_data="kurch")
+	keyboard.add(callback_button)
+	callback_button = types.InlineKeyboardButton(text="Факультет Радиофизики", callback_data="raf")
+	skaffer.send_message(last_chat_id, 'Время прибытия ближайшего автобуса к какой остановке вам нужно?', reply_markup = keyboard)
 
-	skaffer.register_next_step_handler(answer, stop)
-
-def stop(answer):
-	if answer.text == 'Курчатова':
-		kurch(last_chat_id)
-	elif answer.text == 'Факультет Радиофизики':
-		raf(last_chat_id)
-
+@bot.callback_query_handler(func=lambda call: True)
+def callback_inline(call):
+    # Если сообщение из чата с ботом
+    if call.inline_message_id:
+        if call.data == "kurch":
+            kurch(last_chat_id)
 
 def kurch(last_chat_id):
 	current_time = list((str(datetime.datetime.now().time())).split(':'))
