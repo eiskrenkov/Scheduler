@@ -2,10 +2,12 @@ import requests
 import datetime
 import time
 
+import config
+
 import telebot
 from telebot import types
 
-skaffer = handler(config.token)
+skaffer = telebot.TeleBot(config.token)
 
 def bus(last_chat_id):
 	keyboard = types.ReplyKeyboardMarkup(resize_keyboard = True)
