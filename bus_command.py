@@ -3,6 +3,7 @@ import datetime
 import time
 
 import telebot
+from telebot import types
 
 def bus(last_chat_id):
 	keyboard = types.ReplyKeyboardMarkup(resize_keyboard = True)
