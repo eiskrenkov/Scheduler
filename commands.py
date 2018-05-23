@@ -8,7 +8,7 @@ import os
 
 # import telebot
 from telebot import types
-from telebot import send_message as send_keyboard_message
+from telebot import message_handler as send_keyboard_message
 
 # Импорт локального файла с настройками
 import config
