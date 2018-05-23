@@ -12,15 +12,16 @@ skaffer = telebot.TeleBot(config.token)
 def bus(last_chat_id):
 	keyboard = types.ReplyKeyboardMarkup(resize_keyboard = True)
 	keyboard.add(*[types.KeyboardButton(name) for name in ['Курчатова', 'Факультет Радиофизики']])
-	last_update = skaffer.send_message(last_chat_id, 'Время прибытия ближайшего автобуса к какой остановке вам нужно?', reply_markup = keyboard)
+	answer = skaffer.send_message(last_chat_id, 'Время прибытия ближайшего автобуса к какой остановке вам нужно?', reply_markup = keyboard)
 
-	last_chat_text = last_update['message']['text']
-	last_chat_id = last_update['message']['chat']['id']
+	skaffer.register_next_step_handler(answer, stop)
 
-	if last_chat_text == 'Курчатова':
+def stop(answer):
+	if answer.text == 'Курчатова':
 		kurch(last_chat_id)
-	elif last_chat_text == 'Факультет Радиофизики':
+	elif answer.text == 'Факультет Радиофизики':
 		raf(last_chat_id)
+
 
 def kurch(last_chat_id):
 	current_time = list((str(datetime.datetime.now().time())).split(':'))
