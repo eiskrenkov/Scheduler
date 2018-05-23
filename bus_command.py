@@ -14,6 +14,7 @@ def bus(last_chat_id):
 	callback_button = types.InlineKeyboardButton(text="Курчатова", callback_data="kurch")
 	keyboard.add(callback_button)
 	callback_button = types.InlineKeyboardButton(text="Факультет Радиофизики", callback_data="raf")
+	keyboard.add(callback_button)
 	skaffer.send_message(last_chat_id, 'Время прибытия ближайшего автобуса к какой остановке вам нужно?', reply_markup = keyboard)
 
 @skaffer.callback_query_handler(func=lambda call: True)
@@ -22,6 +23,8 @@ def callback_inline(call):
     if call.inline_message_id:
         if call.data == "kurch":
             kurch(last_chat_id)
+        elif call.data == "raf":
+        	raf(last_chat_id)
 
 def kurch(last_chat_id):
 	current_time = list((str(datetime.datetime.now().time())).split(':'))
