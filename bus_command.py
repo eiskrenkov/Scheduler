@@ -48,15 +48,15 @@ def kurch(last_chat_id):
 				time_leave = list(str(i) for i in bus_timetable.readline().strip().split(':'))
 
 			if time_bus == []:
-				skaffer.send_message(last_chat_id, 'На сегодня втобус 47с окончил движение', remove_keyboard=True)
+				skaffer.send_message(last_chat_id, 'На сегодня втобус 47с окончил движение')
 			else:
 				message_time = 'Следующий автобус 47с прибудет в '
 				message_time += time_bus[0]
 				message_time += ':'
 				message_time += time_bus[1]
-				skaffer.send_message(last_chat_id, message_time, remove_keyboard=True)
+				skaffer.send_message(last_chat_id, message_time)
 	else:
-		skaffer.send_message(last_chat_id, 'По выходным автобус 47с не ходит', remove_keyboard=True)
+		skaffer.send_message(last_chat_id, 'По выходным автобус 47с не ходит')
 
 	if day_now != 'Sat' and day_now != 'Sun':
 		with open('database/buses/96_weekdays.txt') as bus_timetable:
@@ -83,13 +83,13 @@ def kurch(last_chat_id):
 				time_leave = list(str(i) for i in bus_timetable.readline().strip().split(':'))
 
 			if time_bus == []:
-				skaffer.send_message(last_chat_id, 'На сегодня втобус 96 окончил движение', remove_keyboard=True)
+				skaffer.send_message(last_chat_id, 'На сегодня втобус 96 окончил движение')
 			else:
 				message_time = 'Следующий автобус 96 прибудет в '
 				message_time += time_bus[0]
 				message_time += ':'
 				message_time += time_bus[1]
-				skaffer.send_message(last_chat_id, message_time, remove_keyboard=True)
+				skaffer.send_message(last_chat_id, message_time)
 	else:
 		with open('database/buses/96_weekends.txt') as bus_timetable:
 			time_leave = list(str(i) for i in bus_timetable.readline().strip().split(':'))
@@ -115,13 +115,13 @@ def kurch(last_chat_id):
 				time_leave = list(str(i) for i in bus_timetable.readline().strip().split(':'))
 
 			if time_bus == []:
-				skaffer.send_message(last_chat_id, 'На сегодня втобус 96 окончил движение', remove_keyboard=True)
+				skaffer.send_message(last_chat_id, 'На сегодня втобус 96 окончил движение')
 			else:
 				message_time = 'Следующий автобус 96 прибудет в '
 				message_time += time_bus[0]
 				message_time += ':'
 				message_time += time_bus[1]
-				skaffer.send_message(last_chat_id, message_time, remove_keyboard=True)
+				skaffer.send_message(last_chat_id, message_time)
 
 def raf(last_chat_id):
 	print('raf')
