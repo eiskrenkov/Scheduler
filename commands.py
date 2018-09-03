@@ -76,7 +76,7 @@ def tomorrow_timetable(last_chat_id):
 			week_day_number = week_days_list.index(week_day)
 			week_day = week_days_list[week_day_number + 1]
 
-		path = 'database/days'
+		path = 'database/days/'
 		path += week_day
 		path += '.txt'
 
