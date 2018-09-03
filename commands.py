@@ -40,7 +40,7 @@ def timetable(last_chat_id):
 	with open('database/timetable.txt') as tt_file:
 		tt_text = tt_file.read()
 
-	skaffer.send_message(last_chat_id, 'Ваше расписание на второй семестр 1 курса:')
+	skaffer.send_message(last_chat_id, 'Ваше расписание на третий семестр:')
 	skaffer.send_message(last_chat_id, tt_text)
 
 # Функция отправляет в чат расписание занятий на сегодня
