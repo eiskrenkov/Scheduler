@@ -49,8 +49,7 @@ def main():
 			except KeyError as key_error_message:
 				print("Exception while obtaining data from server", key_error_message)
 
-			if last_chat_t
-			ext.lower() in start_dict:
+			if last_chat_text.lower() in start_dict:
 				commands.start(last_chat_id, last_chat_name)
 			elif last_chat_text.lower() in weather_dict:
 				commands.weather(last_chat_id)
