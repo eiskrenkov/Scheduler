@@ -29,7 +29,7 @@ def main():
 	tod_tt_dict = ['/tod', 'tod', 'сегодня', 'пары']
 	tom_tt_dict = ['/tom', 'tom', 'завтра']
 	changelog_dict = ['/changelog', 'changelog', 'что нового', 'что нового?']
-	greet_dict = ['привет', 'дорова', 'дарова', 'здарова', 'йоу']
+	greet_dict = ['привет', 'дорова', 'дарова', 'здарова', 'йоу', 'шалома нахуй']
 	bus47_dict = ['/bus', 'bus']
 	alt_dict = ['/alt', 'alt']
 
@@ -49,7 +49,8 @@ def main():
 			except KeyError as key_error_message:
 				print("Exception while obtaining data from server", key_error_message)
 
-			if last_chat_text.lower() in start_dict:
+			if last_chat_t
+			ext.lower() in start_dict:
 				commands.start(last_chat_id, last_chat_name)
 			elif last_chat_text.lower() in weather_dict:
 				commands.weather(last_chat_id)
@@ -70,8 +71,7 @@ def main():
 			elif last_chat_text.lower() == 'курчатова':
 				bus_command.kurch(last_chat_id)
 			elif last_chat_text.lower() == 'факультет радиофизики':
-				# bus_command.raf(last_chat_id)
-				skaffer.send_message(last_chat_id, 'Эта функция на данный момент в разработке :(')
+				bus_command.raf(last_chat_id)
 			elif last_chat_text.lower() in alt_dict:
 				commands.alt(last_chat_id)
 			elif last_chat_text.lower() in greet_dict:
