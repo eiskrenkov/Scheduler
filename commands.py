@@ -28,13 +28,6 @@ def help(last_chat_id):
 def alt(last_chat_id):
 	skaffer.send_message(last_chat_id, 'Вы можете использовать все команды несколькими способами, например:\n\n/help - help, помощь, памагити\n/next - next, след, следующая, дальше\n/weather - weather, прогноз, погода\n/tt - tt, timetable, расписание\n/tod - tod, сегодня, пары\n/tom - tom, завтра\n/bus47 - bus47, 47')
 
-# Функция отправляет в чат список изменений в последней версии бота
-def changelog(last_chat_id):
-	with open('changelog.txt') as changelog_file:
-		changelog_text = changelog_file.read()
-
-	skaffer.send_message(last_chat_id, changelog_text)
-
 # Функция отправляет в чат все расписание занятий
 def timetable(last_chat_id):
 	with open('database/timetable.txt') as tt_file:
