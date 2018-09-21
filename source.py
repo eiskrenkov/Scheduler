@@ -70,7 +70,7 @@ def main():
 				skaffer.send_message(last_chat_id, err_msg)
 			
 			log = ''
-			log += last_chat_id.str()
+			log += str(last_chat_id)
 			log += ' typed '
 			log += '['
 			log += last_chat_text
