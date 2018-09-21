@@ -78,6 +78,7 @@ def main():
 			log += '['
 			log += last_chat_text
 			log += ']'
+			print(log)
 
 			new_offset = last_update_id + 1
 
