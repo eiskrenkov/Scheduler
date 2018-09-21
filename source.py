@@ -68,13 +68,13 @@ def main():
 				err_msg += last_chat_name
 				err_msg += ' :(\nИспользуй /help, чтобы узнать, что я умею'
 				skaffer.send_message(last_chat_id, err_msg)
-            
-            log = ''
-            log += last_chat_id
-            log += ' typed '
-            log += '['
-            log += last_chat_text
-            log += ']'
+			
+			log = ''
+			log += last_chat_id
+			log += ' typed '
+			log += '['
+			log += last_chat_text
+			log += ']'
 
 if __name__ == '__main__':
 	try:
