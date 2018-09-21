@@ -50,7 +50,7 @@ def main():
 				commands.timetable(last_chat_id)
 			elif last_chat_text in tod_dict:
 				commands.today_timetable(last_chat_id)
-			elif last_chat_text in tomdict:
+			elif last_chat_text in tom_dict:
 				commands.tomorrow_timetable(last_chat_id)
 			elif last_chat_text in bus47_dict:
 				bus_command.bus(last_chat_id)
