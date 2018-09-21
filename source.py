@@ -19,8 +19,8 @@ from bothandler import BotHandler as handler
 skaffer = handler(config.token)
 
 def main():
-    
-    new_offset = None
+
+	new_offset = None
 
 	while True:
 		# Получение информации с сервера
