@@ -19,10 +19,12 @@ from bothandler import BotHandler as handler
 skaffer = handler(config.token)
 
 def main():
+    
+    new_offset = None
 
 	while True:
 		# Получение информации с сервера
-		skaffer.get_updates()
+		skaffer.get_updates(new_offset)
 		last_update = skaffer.get_last_update()
 
 		# При получении непустого ответа с сервера
@@ -75,6 +77,8 @@ def main():
 			log += '['
 			log += last_chat_text
 			log += ']'
+
+            new_offset = last_update_id + 1
 
 if __name__ == '__main__':
 	try:
