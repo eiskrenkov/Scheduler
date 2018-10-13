@@ -84,7 +84,7 @@ def tomorrow_timetable(last_chat_id):
 def weekday_timetable(last_chat_id, last_chat_text):
 	last_chat_text.title()
 	path = 'database/days/'
-	path += week_day
+	path += last_chat_text
 	path += '.txt'
         
 	with open(path) as weekday_tt_file:
