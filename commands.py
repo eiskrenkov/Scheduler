@@ -24,7 +24,7 @@ def start(last_chat_id, last_chat_name):
 
 # Функция отправляет в чат сообщение с полезной для пользователя информацией
 def help(last_chat_id):
-	skaffer.send_message(last_chat_id, text = 'Что я могу:\n\n/tt - Получить полное расписание занятий\n/next - Какая же у меня следующая пара?\n/weather - Информация о погоде\n/tod - Расписание на сегодня\n/tom - Расписание на завтра\n/bus - Время прибытия ближайшего автобуса на остановки "Курчатова" и "Факультет Радиофизики"\n\nP.S Вы можете использовать все предложенные команды без символа"/". Просмотреть весь список альтернативных команд - /alt')
+	skaffer.send_message(last_chat_id, text = 'Что я могу:\n\n/tt - Получить полное расписание занятий\n/next - Какая же у меня следующая пара?\n/weather - Информация о погоде\n/tod - Расписание на сегодня\n/tom - Расписание на завтра\n/bus - Время прибытия ближайшего автобуса на остановки "Курчатова" и "Факультет Радиофизики"\n\nТак же вы можете написать в чат любой день недели(Mon/Понедельник), чтобы получить расписание на конкретный день недели\n\nP.S Вы можете использовать все предложенные команды без символа"/". Просмотреть весь список альтернативных команд - /alt')
 
 def alt(last_chat_id):
 	skaffer.send_message(last_chat_id, 'Вы можете использовать все команды несколькими способами, например:\n\n/help - help, помощь, памагити\n/next - next, след, следующая, дальше\n/weather - weather, прогноз, погода\n/tt - tt, timetable, расписание\n/tod - tod, сегодня, пары\n/tom - tom, завтра\n/bus47 - bus47, 47')
@@ -93,9 +93,11 @@ def weekday_timetable(last_chat_id, last_chat_text):
 		weekday_tt_text = weekday_tt_file.read()
     
 	weekday_localized = weekdays_dict_ru[weekdays_dict_en.index(last_chat_text)]
-        
-	skaffer.send_message(last_chat_id, 'В ' + weekday_localized + ' у вас:')
-	skaffer.send_message(last_chat_id, weekday_tt_text)
+    if week_day != 'Sun':
+        skaffer.send_message(last_chat_id, 'Расписание на день недели (' + weekday_localized + ')')
+        skaffer.send_message(last_chat_id, weekday_tt_text)
+    else:
+        skaffer.send_message(last_chat_id, 'В воскресенье у вас выходной (пока)')
 
 # Функция отправляет в чат сообщение с информацией о текущей погоде
 def weather(last_chat_id):
