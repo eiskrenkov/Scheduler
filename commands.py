@@ -87,7 +87,7 @@ def weekday_timetable(last_chat_id, last_chat_text):
 	path += '.txt'
         
 	with open(path) as weekday_tt_file:
-	weekday_tt_text = weekday_tt_file.read()
+		weekday_tt_text = weekday_tt_file.read()
     
 	weekday_localized = weekdays_dict_ru[weekdays_dict_en.index(last_chat_text)]
         
