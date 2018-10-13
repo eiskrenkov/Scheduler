@@ -94,7 +94,7 @@ def weekday_timetable(last_chat_id, last_chat_text):
     
 	weekday_localized = weekdays_dict_ru[weekdays_dict_en.index(last_chat_text)]
         
-	skaffer.send_message(last_chat_id, 'Ваше расписание на ' + weekday_localized + ':')
+	skaffer.send_message(last_chat_id, 'В ' + weekday_localized + ' у вас:')
 	skaffer.send_message(last_chat_id, weekday_tt_text)
 
 # Функция отправляет в чат сообщение с информацией о текущей погоде
