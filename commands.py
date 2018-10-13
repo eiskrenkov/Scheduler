@@ -93,11 +93,11 @@ def weekday_timetable(last_chat_id, last_chat_text):
 		weekday_tt_text = weekday_tt_file.read()
     
 	weekday_localized = weekdays_dict_ru[weekdays_dict_en.index(last_chat_text)]
-    if week_day != 'Sun':
-        skaffer.send_message(last_chat_id, 'Расписание на день недели (' + weekday_localized + ')')
-        skaffer.send_message(last_chat_id, weekday_tt_text)
-    else:
-        skaffer.send_message(last_chat_id, 'В воскресенье у вас выходной (пока)')
+	if week_day != 'Sun':
+		skaffer.send_message(last_chat_id, 'Расписание на день недели (' + weekday_localized + ')')
+		skaffer.send_message(last_chat_id, weekday_tt_text)
+	else:
+		skaffer.send_message(last_chat_id, 'В воскресенье у вас выходной (пока)')
 
 # Функция отправляет в чат сообщение с информацией о текущей погоде
 def weather(last_chat_id):
