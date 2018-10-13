@@ -82,17 +82,17 @@ def tomorrow_timetable(last_chat_id):
 
 # Функция отправляет в чат сообщение с расписанием на конкретный день недели
 def weekday_timetable(last_chat_id, last_chat_text):
-    path = 'database/days/'
-        path += week_day
-        path += '.txt'
+	path = 'database/days/'
+	path += week_day
+	path += '.txt'
         
-        with open(path) as weekday_tt_file:
-            weekday_tt_text = weekday_tt_file.read()
+	with open(path) as weekday_tt_file:
+	weekday_tt_text = weekday_tt_file.read()
     
-        weekday_localized = weekdays_dict_ru[weekdays_dict_en.index(last_chat_text)]
+	weekday_localized = weekdays_dict_ru[weekdays_dict_en.index(last_chat_text)]
         
-        skaffer.send_message(last_chat_id, 'Ваше расписание на ' + weekday_localized + ':')
-        skaffer.send_message(last_chat_id, weekday_tt_text
+	skaffer.send_message(last_chat_id, 'Ваше расписание на ' + weekday_localized + ':')
+	skaffer.send_message(last_chat_id, weekday_tt_text)
 
 # Функция отправляет в чат сообщение с информацией о текущей погоде
 def weather(last_chat_id):
