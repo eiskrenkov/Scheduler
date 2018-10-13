@@ -82,6 +82,7 @@ def tomorrow_timetable(last_chat_id):
 
 # Функция отправляет в чат сообщение с расписанием на конкретный день недели
 def weekday_timetable(last_chat_id, last_chat_text):
+	last_chat_text.title()
 	path = 'database/days/'
 	path += week_day
 	path += '.txt'
