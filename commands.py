@@ -8,6 +8,7 @@ import os
 
 # Импорт локального файла с настройками
 import config
+from data_storage import *
 
 #Импорт класса для обработки изменений на сервере
 from bothandler import BotHandler as handler
@@ -78,6 +79,20 @@ def tomorrow_timetable(last_chat_id):
 
 		skaffer.send_message(last_chat_id, 'Ваше расписание на завтра:')
 		skaffer.send_message(last_chat_id, tt_tomorrow_text)
+
+# Функция отправляет в чат сообщение с расписанием на конкретный день недели
+def weekday_timetable(last_chat_id, last_chat_text):
+    path = 'database/days/'
+        path += week_day
+        path += '.txt'
+        
+        with open(path) as weekday_tt_file:
+            weekday_tt_text = weekday_tt_file.read()
+    
+        weekday_localized = weekdays_dict_ru[weekdays_dict_en.index(last_chat_text)]
+        
+        skaffer.send_message(last_chat_id, 'Ваше расписание на ' + weekday_localized + ':')
+        skaffer.send_message(last_chat_id, weekday_tt_text
 
 # Функция отправляет в чат сообщение с информацией о текущей погоде
 def weather(last_chat_id):

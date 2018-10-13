@@ -10,3 +10,5 @@ changelog_dict = ['/changelog', 'changelog', 'что нового', 'что но
 greet_dict = ['привет', 'дорова', 'дарова', 'здарова', 'йоу', 'шалома нахуй']
 bus47_dict = ['/bus', 'bus']
 alt_dict = ['/alt', 'alt']
+weekdays_dict_en = ['Mon', 'Tue', 'Wed', 'Thu', 'Wed', 'Sat', 'Sun']
+weekdays_dict_ru = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье']
