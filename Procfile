@@ -1,1 +1,0 @@
-bot: python source.py
