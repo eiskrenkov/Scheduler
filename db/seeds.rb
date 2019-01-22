@@ -5,7 +5,20 @@
 # 4 - Seminar
 # 5 - Other
 
+Schedule.delete_all
+Weekend.delete_all
 Pair.delete_all
+
+Weekday.create(id: 0, name: 'Воскресенье')
+Weekday.create(id: 1, name: 'Понедельник')
+Weekday.create(id: 2, name: 'Вторник')
+Weekday.create(id: 3, name: 'Среда')
+Weekday.create(id: 4, name: 'Четверг')
+Weekday.create(id: 5, name: 'Пятница')
+Weekday.create(id: 6, name: 'Суббота')
+
+Schedule.create(id: 1, semester: 4)
+Schedule.first.weekdays = Weekday.all
 
 # Monday
 Pair.create(id: 0, name: 'Военная Кафедра', kind: 5, place: nil, start_time: '9:00', end_time: '13:50')
