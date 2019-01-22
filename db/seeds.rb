@@ -6,7 +6,7 @@
 # 5 - Other
 
 Schedule.delete_all
-Weekend.delete_all
+Weekday.delete_all
 Pair.delete_all
 
 Weekday.create(id: 0, name: 'Воскресенье')
