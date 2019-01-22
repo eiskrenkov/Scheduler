@@ -24,3 +24,5 @@ ru:
       schedule_for: 'Расписание на %{weekday}'
       no_pairs: В %{weekday} у вас нет пар
       place: аудитория %{number}
+    schedule:
+      header: "Ваше расписание на %{semester} семестр:\n\n"

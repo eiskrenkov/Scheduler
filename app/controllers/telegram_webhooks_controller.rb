@@ -11,11 +11,15 @@ class TelegramWebhooksController < Telegram::Bot::UpdatesController
   end
 
   def tod!(*)
-    respond_with :message, text: weekday_schedule_for(Time.now.wday)
+    respond_with :message, text: present_schedule_for_weekday(Time.now.wday)
   end
 
   def tom!(*)
-    respond_with :message, text: weekday_schedule_for(Time.now.next_day.wday)
+    respond_with :message, text: present_schedule_for_weekday(Time.now.next_day.wday)
+  end
+
+  def tt!(*)
+    respond_with :message, text: present_week_schedule
   end
 
   def action_missing(action, *_args)
