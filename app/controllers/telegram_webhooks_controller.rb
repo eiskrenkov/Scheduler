@@ -2,6 +2,8 @@ class TelegramWebhooksController < Telegram::Bot::UpdatesController
   include Telegram::Bot::UpdatesController::MessageContext
   include SchedulePresenter
 
+  use_session!
+
   def start!(*)
     respond_with :message, text: t('telegram_webhooks.start', username: username)
   end
