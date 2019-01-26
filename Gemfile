@@ -7,6 +7,9 @@ gem 'telegram-bot'
 
 gem 'devise'
 
+gem 'bootstrap', '~> 4.2.1'
+gem 'jquery-rails'
+
 gem 'rails', '~> 5.2.2'
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 gem 'puma', '~> 3.11'
