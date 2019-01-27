@@ -18,3 +18,9 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+
+var http = require("http");
+
+setInterval(function() {
+    http.get("http://skafferbot.herokuapp.com");
+}, 300000);
