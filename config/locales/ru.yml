@@ -26,3 +26,10 @@ ru:
       place: аудитория %{number}
     schedule:
       header: "Ваше расписание на %{semester} семестр:\n\n"
+
+  enumerations:
+    pair_kinds:
+      lection: Лекция
+      practice: Практика
+      laboratory: Лаба
+      seminar: Семинар

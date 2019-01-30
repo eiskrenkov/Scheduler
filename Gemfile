@@ -9,6 +9,8 @@ gem 'devise'
 
 gem 'newrelic_rpm'
 
+gem 'enumerate_it'
+
 gem 'bootstrap', '~> 4.2.1'
 gem 'jquery-rails'
 

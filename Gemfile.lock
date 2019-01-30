@@ -70,6 +70,8 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
+    enumerate_it (1.7.0)
+      activesupport (>= 3.0.0)
     erubi (1.8.0)
     execjs (2.7.0)
     ffi (1.9.25)
@@ -233,6 +235,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
   devise
+  enumerate_it
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
