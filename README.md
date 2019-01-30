@@ -1,24 +1,4 @@
-# README
+# SkafferBot
+Skaffer is a simple telegram bot available [here](https://t.me/SkafferBot) that reminds students their schedule. See the list of available commands simply typing `/help` in the telegram chat.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Admin panel can be found [here](https://skafferbot.herokuapp.com)
