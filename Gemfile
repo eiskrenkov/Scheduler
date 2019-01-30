@@ -7,6 +7,8 @@ gem 'telegram-bot'
 
 gem 'devise'
 
+gem 'newrelic_rpm'
+
 gem 'bootstrap', '~> 4.2.1'
 gem 'jquery-rails'
 
