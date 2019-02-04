@@ -1,38 +1,34 @@
+require 'active_support/concern'
+
 module SchedulePresenter
-  WEEKENDS_IDS = [0, 6].freeze
+  extend ActiveSupport::Concern
+
+  included do
+    Weekdays.keys.each_with_index do |weekday, index|
+      define_method("#{weekday}!") do
+        respond_with :message, text: present_schedule_for_weekday(index)
+      end
+    end
+  end
 
   def present_schedule_for_weekday(id)
-    return t('.weekday.no_pairs', weekday: weekday_name(id)) if WEEKENDS_IDS.include? id
+    weekday = Weekday.find(id)
+    return no_pairs_for(weekday) if weekday.weekend?
 
-    message = t('.weekday.schedule_for', weekday: weekday_name(id))
-    message << fetch_weekday(id)
+    "#{Weekdays.t(weekday.name)}\n#{weekday.fetch_pairs}"
   end
 
   def present_week_schedule
-    schedule = t('.schedule.header', semester: current_semester)
-    Weekday.all.each do |weekday|
-      schedule << "#{weekday.name} #{fetch_weekday(weekday.id)}\n\n" if weekday.pairs.present?
+    schedule = t('.schedule.header', semester: Schedule.current_semester)
+    Weekday.all.find_each do |weekday|
+      schedule << "#{Weekdays.t(weekday.name)} #{weekday.fetch_pairs}\n\n" if weekday.pairs.present?
     end
     schedule
   end
 
   private
 
-  def fetch_weekday(id)
-    weekday_schedule = ''
-    Weekday.find(id).pairs.each do |pair|
-      weekday_schedule << "\n#{pair.start_time} - #{pair.name}"
-      weekday_schedule << ", #{pair.fetch_kind}" if pair.fetch_kind
-      weekday_schedule << ", #{pair.place}" if pair.place
-    end
-    weekday_schedule
-  end
-
-  def weekday_name(number)
-    Weekday.all.pluck(:name)[number]
-  end
-
-  def current_semester
-    Schedule.last.semester
+  def no_pairs_for(weekday)
+    t('.weekday.no_pairs', weekday: Weekdays.t(weekday.name))
   end
 end

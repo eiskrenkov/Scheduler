@@ -4,18 +4,17 @@
 # 3 - Seminar
 # 4 - Other
 
+# Cleaning current DB
 Schedule.delete_all
 Weekday.delete_all
 Pair.delete_all
 
-Weekday.create(id: 0, name: 'Воскресенье')
-Weekday.create(id: 1, name: 'Понедельник')
-Weekday.create(id: 2, name: 'Вторник')
-Weekday.create(id: 3, name: 'Среда')
-Weekday.create(id: 4, name: 'Четверг')
-Weekday.create(id: 5, name: 'Пятница')
-Weekday.create(id: 6, name: 'Суббота')
+# Weekdays
+Weekdays.list.each_with_index do |weekday, index|
+  Weekday.create(id: index, name: weekday)
+end
 
+# Schedule
 Schedule.create(id: 1, semester: 4)
 Schedule.first.weekdays = Weekday.all
 

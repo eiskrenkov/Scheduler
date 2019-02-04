@@ -1,0 +1,69 @@
+AllCops:
+  Include:
+  - "**/*.rb"
+  - Gemfile
+  - Rakefile
+  - lib/tasks/**/*.rake
+  - config.ru
+
+Rails:
+  Enabled: true
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Lint/UnusedBlockArgument:
+  Enabled: false
+
+Lint/UnusedMethodArgument:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 20
+  Exclude:
+  - db/migrate/*
+  - config/environments/*
+
+Metrics/ClassLength:
+  Max: 200
+
+Metrics/LineLength:
+  Max: 120
+  IgnoreCopDirectives: true
+  IgnoredPatterns:
+  - '[''"][0-9a-f]{128}[''"]'
+
+Metrics/MethodLength:
+  Max: 20
+  Exclude:
+  - db/migrate/*
+
+Naming/PredicateName:
+  Enabled: false
+
+Rails/Delegate:
+  Enabled: false
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
+Rails/TimeZone:
+  Enabled: false
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+Security/YAMLLoad:
+  AutoCorrect: false
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+Style/Documentation:
+  Enabled: false
+
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+Style/FrozenStringLiteralComment:
+  Enabled: false

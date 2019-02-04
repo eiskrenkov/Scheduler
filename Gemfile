@@ -11,6 +11,8 @@ gem 'newrelic_rpm'
 
 gem 'enumerate_it'
 
+gem 'rubocop', require: false
+
 gem 'bootstrap', '~> 4.2.1'
 gem 'jquery-rails'
 
@@ -27,10 +29,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
@@ -39,4 +40,4 @@ group :production do
   gem 'redis-rails'
 end
 
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

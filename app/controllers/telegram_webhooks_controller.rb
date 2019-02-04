@@ -12,6 +12,10 @@ class TelegramWebhooksController < Telegram::Bot::UpdatesController
     respond_with :message, text: t('telegram_webhooks.help')
   end
 
+  def yes!(*)
+    respond_with :message, text: present_schedule_for_weekday(Time.now.prev_day.wday)
+  end
+
   def tod!(*)
     respond_with :message, text: present_schedule_for_weekday(Time.now.wday)
   end
@@ -25,17 +29,15 @@ class TelegramWebhooksController < Telegram::Bot::UpdatesController
   end
 
   def action_missing(action, *_args)
-    begin
-      send("#{message}!")
-    rescue NoMethodError
-      respond_with :message, text: t('telegram_webhooks.action_missing', username: username)
-    end
+    send("#{message}!")
+  rescue NoMethodError
+    respond_with :message, text: t('telegram_webhooks.action_missing', username: username)
   end
 
   private
 
   def message
-    update['message']['text'].downcase.gsub('/', '')
+    update['message']['text'].downcase.delete('/')
   end
 
   def username
