@@ -1,12 +1,12 @@
-div class='card card-background'
-	div class='card-body'
-		h4 class='card-title'
-			= weekday.name
+.card.card-background
+  .card-body
+    h4.card-title
+      = Weekdays.t(weekday.name)
 
-		hr
+    hr
 
-		- weekday.pairs.each do |pair|
-			= pair_with_time(pair)
-			br
+    - weekday.pairs.each do |pair|
+      = pair_with_time(pair)
+      br
 
 br

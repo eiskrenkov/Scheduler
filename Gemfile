@@ -7,6 +7,8 @@ gem 'telegram-bot'
 
 gem 'devise'
 
+gem 'newrelic_rpm'
+
 gem 'enumerate_it'
 
 gem 'rubocop', require: false

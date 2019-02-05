@@ -1,20 +1,20 @@
-div class='container' id='devise'
-  div class='card card-background'
+.container id='devise'
+  .card.card-background
     h2 Skaffer Admin
-    p Login to manage the Schedule of your group
+    p = t('views.login_to_manage')
 
     = login_form do |f|
-      = p alert
+      p = alert
 
-      div class='form-group'
+      .form-group
         label Email
         = f.email_field :email, placeholder: 'Email', class: 'form-control form-background'
 
-      div class='form-group'
+      .form-group
         label Password
         = f.password_field :password, placeholder: 'Password', class: 'form-control form-background'
 
       br
 
-      div class='text-center'
+      .text-center
         button type='submit' class='btn btn-primary btn-lg' Login
