@@ -1,6 +1,6 @@
 class Weekday < ApplicationRecord
   has_many :pairs, dependent: :destroy
-  accepts_nested_attributes_for :pairs
+  accepts_nested_attributes_for :pairs, allow_destroy: true
 
   scope :except_sunday, -> { where.not(id: 0) }
 
@@ -8,8 +8,8 @@ class Weekday < ApplicationRecord
     weekday_schedule = ''
     pairs.each do |pair|
       weekday_schedule << "\n#{pair.start_time} - #{pair.name}"
-      weekday_schedule << ", #{pair.fetch_kind}" if pair.fetch_kind
-      weekday_schedule << ", #{pair.place}" if pair.place
+      weekday_schedule << ", #{pair.fetch_kind}" if pair.kind.present?
+      weekday_schedule << ", #{pair.place}" if pair.place.present?
     end
     weekday_schedule
   end

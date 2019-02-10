@@ -9,3 +9,11 @@ ru:
 
   weekday:
     updated_at: Обновлено %{days} назад
+    save: Сохранить
+    back: Назад
+    pair:
+      name: Название
+      place: Место
+      kind: Тип
+      start_time: Начало
+      end_time: Конец

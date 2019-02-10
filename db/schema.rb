@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_26_124001) do
+ActiveRecord::Schema.define(version: 2019_02_10_154356) do
 
   create_table "pairs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "start_time"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2019_01_26_124001) do
     t.bigint "weekday_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "kind", default: 0
+    t.string "kind"
     t.index ["weekday_id"], name: "index_pairs_on_weekday_id"
   end
 

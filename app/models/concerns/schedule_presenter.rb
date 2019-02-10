@@ -15,13 +15,13 @@ module SchedulePresenter
     weekday = Weekday.find(id)
     return no_pairs_for(weekday) if weekday.weekend?
 
-    "#{Weekdays.t(weekday.name)}\n#{weekday.fetch_pairs}"
+    "#{weekday.name}\n#{weekday.fetch_pairs}"
   end
 
   def present_week_schedule
     schedule = t('.schedule.header', semester: Schedule.current_semester)
     Weekday.all.find_each do |weekday|
-      schedule << "#{Weekdays.t(weekday.name)} #{weekday.fetch_pairs}\n\n" if weekday.pairs.present?
+      schedule << "#{weekday.name} #{weekday.fetch_pairs}\n\n" if weekday.pairs.present?
     end
     schedule
   end
@@ -29,6 +29,6 @@ module SchedulePresenter
   private
 
   def no_pairs_for(weekday)
-    t('.weekday.no_pairs', weekday: Weekdays.t(weekday.name))
+    t('.weekday.no_pairs', weekday: weekday.name)
   end
 end

@@ -1,0 +1,31 @@
+.container
+  .card.card-background
+    .card-body
+      = form_for @weekday do |weekday_form|
+        .row
+          .col-md-12
+            h4 = @weekday.name
+            hr
+
+        .row
+          .col-2 = t('weekday.pair.start_time')
+          .col-2 = t('weekday.pair.end_time')
+          .col-4 = t('weekday.pair.name')
+          .col-2 = t('weekday.pair.kind')
+          .col-2 = t('weekday.pair.place')
+
+        .row
+          .col-md-12
+            - @weekday.pairs.each do |pair|
+              = weekday_form.fields_for :pairs, pair do |pair_fields|
+                .form-group.row id='weekday-form'
+                  .col-2 = pair_fields.text_field :start_time, placeholder: t('weekday.pair.start_time'), class: 'form-control'
+                  .col-2 = pair_fields.text_field :end_time, placeholder: t('weekday.pair.end_time'), class: 'form-control'
+                  .col-4 = pair_fields.text_field :name, placeholder: t('weekday.pair.name'), class: 'form-control', id: 'pair_name'
+                  .col-2 = pair_fields.select(:kind, PairKinds.to_a, { include_blank: true }, { class: 'custom-select mr-sm-2' })
+                  .col-2 = pair_fields.text_field :place, placeholder: t('weekday.pair.place'), class: 'form-control'
+        .row
+          .col-10
+            = link_to t('weekday.back'), root_path, class: 'btn btn-primary'
+          .col-2
+            = weekday_form.submit t('weekday.save'), class: 'btn btn-primary pull-right'
