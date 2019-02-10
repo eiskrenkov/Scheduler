@@ -1,0 +1,9 @@
+nav.navbar.navbar-expand-lg.fixed-top.navbar-dark.bg-dark
+  .container
+    = link_to t('navbar.title', semester: Schedule.current_semester), root_path, class: 'navbar-brand'
+
+    ul.navbar-nav.ml-auto
+      - if current_user
+        li.nav-item = link_to t('navbar.sign_out'), destroy_user_session_path, class: 'nav-link', method: 'delete'
+      - else
+        li.nav-item = link_to t('navbar.sign_in'), new_user_session_path, class: 'nav-link'

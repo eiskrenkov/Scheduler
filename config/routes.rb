@@ -3,5 +3,12 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resources :weekdays
+
+  namespace :api do
+    get :current
+    get :weekday
+  end
+
   root to: "admin#home"
 end

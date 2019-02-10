@@ -1,11 +1,9 @@
 .container id='devise'
   .card.card-background
     h2 Skaffer Admin
-    p = t('views.login_to_manage')
+    p = t('login.login_to_manage')
 
     = login_form do |f|
-      p = alert
-
       .form-group
         label Email
         = f.email_field :email, placeholder: 'Email', class: 'form-control form-background'
@@ -15,6 +13,8 @@
         = f.password_field :password, placeholder: 'Password', class: 'form-control form-background'
 
       br
+
+      p = alert
 
       .text-center
         button type='submit' class='btn btn-primary btn-lg' Login

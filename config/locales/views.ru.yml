@@ -1,0 +1,11 @@
+ru:
+  navbar:
+    title: Расписание на %{semester} семестр
+    sign_in: Войти
+    sign_out: Выйти
+
+  login:
+    login_to_manage: Войдите, чтобы управлять расписанием своей группы
+
+  weekday:
+    updated_at: Обновлено %{days} назад
