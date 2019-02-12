@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :weekdays
+  resources :weekdays do
+    resources :pairs, :only => [:destroy]
+  end
 
   namespace :api do
     get :current

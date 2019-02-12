@@ -1,5 +1,9 @@
-.row
-  .col-md-12
-    .form-group.row
-      .col-4.col-form-label 9:00
-      .col-8 = f.text_field :name, class: 'form-control'
+.form-group.row id='weekday-form'
+  .col-2 = pair_fields.text_field :start_time, placeholder: t('weekday.pair.start_time'), class: 'form-control'
+  .col-2 = pair_fields.text_field :end_time, placeholder: t('weekday.pair.end_time'), class: 'form-control'
+  .col-3 = pair_fields.text_field :name, placeholder: t('weekday.pair.name'), class: 'form-control', id: 'pair_name'
+  .col-2 = pair_fields.select(:kind, PairKinds.to_a, { include_blank: true }, { class: 'custom-select mr-sm-2' })
+  .col-2 = pair_fields.text_field :place, placeholder: t('weekday.pair.place'), class: 'form-control'
+  .col-1 = link_to '✖', weekday_pair_path(@weekday, pair), method: :delete,
+                                                           class: 'btn btn-danger',
+                                                           data: { confirm: t('weekday.pair.confirmation', weekday: @weekday.name) }

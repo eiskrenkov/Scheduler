@@ -17,3 +17,5 @@ ru:
       kind: Тип
       start_time: Начало
       end_time: Конец
+      delete: Удалить
+      confirmation: '%{weekday} абсолютно точно не нуждается в этой паре?'

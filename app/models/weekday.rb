@@ -1,6 +1,6 @@
 class Weekday < ApplicationRecord
   has_many :pairs, dependent: :destroy
-  accepts_nested_attributes_for :pairs, allow_destroy: true
+  accepts_nested_attributes_for :pairs, reject_if: :all_blank, allow_destroy: true
 
   scope :except_sunday, -> { where.not(id: 0) }
 
