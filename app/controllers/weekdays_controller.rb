@@ -23,6 +23,6 @@ class WeekdaysController < ApplicationController
   end
 
   def weekday_params
-    params.require(:weekday).permit(pairs_attributes: %i[id name kind start_time place])
+    params.require(:weekday).permit(pairs_attributes: %i[id name kind start_time place _destroy])
   end
 end

@@ -4,13 +4,17 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :weekdays do
-    resources :pairs, :only => [:destroy]
+    resources :pairs, only: %i[destroy]
   end
 
   namespace :api do
-    get :current
-    get :weekday
+    resources :pairs, only: [] do
+      collection do
+        get :current
+        get :weekday
+      end
+    end
   end
 
-  root to: "admin#home"
+  root to: 'admin#home'
 end

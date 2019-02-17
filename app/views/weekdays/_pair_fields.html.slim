@@ -1,9 +1,7 @@
-.form-group.row id='weekday-form'
-  .col-2 = pair_fields.text_field :start_time, placeholder: t('weekday.pair.start_time'), class: 'form-control'
-  .col-2 = pair_fields.text_field :end_time, placeholder: t('weekday.pair.end_time'), class: 'form-control'
-  .col-3 = pair_fields.text_field :name, placeholder: t('weekday.pair.name'), class: 'form-control', id: 'pair_name'
-  .col-2 = pair_fields.select(:kind, PairKinds.to_a, { include_blank: true }, { class: 'custom-select mr-sm-2' })
-  .col-2 = pair_fields.text_field :place, placeholder: t('weekday.pair.place'), class: 'form-control'
-  .col-1 = link_to '✖', weekday_pair_path(@weekday, pair), method: :delete,
-                                                           class: 'btn btn-danger',
-                                                           data: { confirm: t('weekday.pair.confirmation', weekday: @weekday.name) }
+.form-group.row.nested-fields
+  .col-2 = pair_text_field(f, :start_time)
+  .col-2 = pair_text_field(f, :end_time)
+  .col-3 = pair_text_field(f, :name)
+  .col-2 = selector(f, :kind, PairKinds.to_a, include_blank: true)
+  .col-2 = pair_text_field(f, :place)
+  .col-1 = delete_button(f)

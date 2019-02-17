@@ -1,7 +1,7 @@
 .container
   .card.card-background
     .card-body
-      = form_for @weekday do |weekday_form|
+      = form_for @weekday do |f|
         .row
           .col-md-12
             h4 = @weekday.name
@@ -13,15 +13,17 @@
           .col-3 = t('weekday.pair.name')
           .col-2 = t('weekday.pair.kind')
           .col-2 = t('weekday.pair.place')
-          .col-1 = t('weekday.pair.delete')
 
         .row
           .col-md-12
-            - @weekday.pairs.each do |pair|
-              = weekday_form.fields_for :pairs, pair do |pair_fields|
-                = render 'pair_fields', pair_fields: pair_fields, pair: pair
+              = f.fields_for :pairs do |pair|
+                = render 'pair_fields', f: pair
+              .links
+                = link_to_add_association t('weekday.pair.add'), f, :pairs, class: 'btn btn-outline-primary btn-block'
+        br
+
         .row
           .col-10
             = link_to t('weekday.back'), root_path, class: 'btn btn-primary'
           .col-2
-            = weekday_form.submit t('weekday.save'), class: 'btn btn-primary pull-right'
+            = f.submit t('weekday.save'), class: 'btn btn-primary pull-right'

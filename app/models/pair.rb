@@ -1,4 +1,6 @@
 class Pair < ApplicationRecord
+  belongs_to :weekday
+
   def fetch_kind
     PairKinds.t(kind)
   end

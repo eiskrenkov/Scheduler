@@ -13,6 +13,8 @@ gem 'enumerate_it'
 
 gem 'rubocop', require: false
 
+gem 'cocoon'
+
 gem 'bootstrap', '~> 4.2.1'
 gem 'jquery-rails'
 
