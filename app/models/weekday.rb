@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: weekdays
+#
+#  id          :bigint           not null, primary key
+#  name        :string(255)
+#  schedule_id :bigint
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 class Weekday < ApplicationRecord
   has_many :pairs, dependent: :destroy, inverse_of: :weekday
   accepts_nested_attributes_for :pairs, reject_if: :all_blank, allow_destroy: true
