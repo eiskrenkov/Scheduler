@@ -1,7 +1,7 @@
 .form-group.row.nested-fields
-  .col-2 = pair_text_field(f, :start_time)
-  .col-2 = pair_text_field(f, :end_time)
-  .col-3 = pair_text_field(f, :name)
-  .col-2 = selector(f, :kind, PairKinds.to_a, include_blank: true)
-  .col-2 = pair_text_field(f, :place)
-  .col-1 = delete_button(f)
+  .col-2 = f.input :start_time
+  .col-2 = f.input :end_time
+  .col-3 = f.input :name
+  .col-2 = f.input :kind, collection: PairKinds.to_a, include_blank: true
+  .col-2 = f.input :place
+  .col-1 = remove_association_button f

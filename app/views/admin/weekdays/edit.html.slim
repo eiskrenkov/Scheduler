@@ -1,11 +1,9 @@
 .container
   .card.card-background
     .card-body
-      = form_for @weekday, url: admin_weekday_path do |f|
-        .row
-          .col-md-12
-            h4 = @weekday.name_humanize
-            hr
+      = simple_form_for resource, url: admin_weekday_path, wrapper: :inline_form do |f|
+        h4 = resource.name_humanize
+        hr
 
         .row
           .col-2 = t('weekday.pair.start_time')
@@ -16,14 +14,11 @@
 
         .row
           .col-md-12
-              = f.fields_for :pairs do |pair|
-                = render 'pair_fields', f: pair
-              .links
-                = link_to_add_association t('weekday.pair.add'), f, :pairs, class: 'btn btn-outline-primary btn-block'
+            = f.simple_fields_for :pairs do |pair|
+              = render 'pair_fields', f: pair
+            .links
+              = link_to_add_association t('weekday.pair.add'), f, :pairs, class: 'btn btn-outline-primary btn-block'
         br
 
-        .row
-          .col-10
-            = link_to t('weekday.back'), root_path, class: 'btn btn-primary'
-          .col-2
-            = f.submit t('weekday.save'), class: 'btn btn-primary pull-right'
+        = cancel_button
+        .pull-right = save_button

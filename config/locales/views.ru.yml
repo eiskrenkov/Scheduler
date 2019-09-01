@@ -1,19 +1,22 @@
 ru:
+  shared:
+    log_in: Войти
+    log_out: Выйти
+    save: Сохранить
+    cancel: Отменить
+    bot: Telegram Бот
+
   navbar:
-    title: Расписание РФиКТ
-
-    schedule: Расписание
-
-    sign_in: Войти
-    sign_out: Выйти
+    schedule:
+      title: Расписание
+      updated_ago: (обновлено %{ago} назад)
 
   login:
-    login_to_manage: Войдите, чтобы управлять расписанием своей группы
+    explanation: Войдите для управления расписанием
 
   weekday:
-    updated_at: Обновлено %{days} назад
-    save: Сохранить
-    back: Назад
+    free: В этот день пар нет
+
     pair:
       name: Название
       place: Место

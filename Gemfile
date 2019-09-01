@@ -10,6 +10,8 @@ gem 'mysql2'
 gem 'devise'
 gem 'enumerate_it'
 gem 'cocoon'
+gem 'simple_form'
+gem 'inherited_resources'
 
 # Telegram
 gem 'telegram-bot'
@@ -21,6 +23,7 @@ gem 'slim'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
+gem 'font-awesome-rails'
 
 # Additional
 gem 'turbolinks'
