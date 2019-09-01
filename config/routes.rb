@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
-  telegram_webhook TelegramWebhooksController
+  telegram_webhook Telegram::ScheduleController
 
-  devise_for :users
+  devise_for :web_users
 
-  resources :weekdays do
-    resources :pairs, only: %i[destroy]
+  namespace :admin do
+    resources :weekdays do
+      resources :pairs, only: %i[destroy]
+    end
+  end
+
+  namespace :dashboard do
+    post 'set_group' => 'schedule#set_group'
+
+    root to: 'schedule#index'
   end
 
   namespace :api do
@@ -16,5 +24,5 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: 'admin#home'
+  root to: redirect('/dashboard')
 end

@@ -12,8 +12,16 @@
  *
  */
 
- @import "bootstrap";
- @import "devise";
+@import "bootstrap";
+@import "devise";
+
+// .navbar-development {
+//   background-color: #DA5542 !important;
+// }
+
+body {
+  padding-top: 80px;
+}
 
 .pull-right {
 	float: right;
@@ -23,6 +31,14 @@
 	float: left;
 }
 
-body {
-	padding-top: 80px;
-}
+// a {
+//   color: #DA5542;
+// }
+
+// a:hover {
+//   color: #DA3243;
+// }
+
+// .nav-link.active, .badge-primary {
+//   background-color: #DA5542 !important;
+// }

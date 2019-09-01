@@ -1,0 +1,7 @@
+ru:
+  enumerations:
+    pair_kinds:
+      lection: Лекция
+      practice: Практика
+      laboratory: Лаба
+      seminar: Семинар

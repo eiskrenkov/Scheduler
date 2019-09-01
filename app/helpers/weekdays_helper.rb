@@ -8,7 +8,7 @@ module WeekdaysHelper
   end
 
   def selector(form, type, collection, options = {})
-    form.select(type, collection, options, { class: 'custom-select mr-sm-2' })
+    form.select(type, collection, options, class: 'custom-select mr-sm-2')
   end
 
   def delete_button(form)

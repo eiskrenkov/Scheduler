@@ -3,32 +3,49 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+# Core
 gem 'rails', '~> 5.2.3'
-
-gem 'telegram-bot'
+gem 'puma'
+gem 'mysql2'
 gem 'devise'
 gem 'enumerate_it'
 gem 'cocoon'
 
-gem 'bootstrap', '~> 4.2.1'
-gem 'jquery-rails'
-gem 'mysql2', '>= 0.4.4', '< 0.6.0'
-gem 'puma', '~> 3.11'
+# Telegram
+gem 'telegram-bot'
 
+# Frontend
+gem 'bootstrap'
+gem 'jquery-rails'
 gem 'slim'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
+gem 'sass-rails'
+gem 'uglifier'
 gem 'coffee-rails'
-gem 'turbolinks', '~> 5'
+
+# Additional
+gem 'turbolinks'
 gem 'bootsnap', '~> 1.3', require: false
 
 group :development do
+  gem 'foreman'
   gem 'web-console'
   gem 'listen'
   gem 'spring'
   gem 'spring-watcher-listen'
   gem 'annotate'
-  gem 'rubocop-rails'
+
+  # Code analysis
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-thread_safety', require: false
+  gem 'rubocop-rspec', require: false
+
+  gem 'pronto-rubocop', require: false
+end
+
+group :development, :test do
+  gem 'pry-rails'
   gem 'pry-byebug'
 end
 

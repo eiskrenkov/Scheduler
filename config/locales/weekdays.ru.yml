@@ -1,0 +1,10 @@
+ru:
+  enumerations:
+    weekdays:
+      mon: Понедельник
+      tue: Вторник
+      wed: Среда
+      thu: Четверг
+      fri: Пятница
+      sat: Суббота
+      sun: Воскресенье

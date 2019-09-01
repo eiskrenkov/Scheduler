@@ -1,0 +1,12 @@
+- if weekday.pairs.present?
+  .col-md-6
+    .card
+      h5.card-header = link_to weekday.name_humanize, edit_admin_weekday_path(weekday)
+      .list-group.list-group-flush
+        - weekday.pairs.each_with_index do |pair, index|
+          .list-group-item.list-group-item-action.d-flex.justify-content-between.align-items-center
+            = "#{pair.start_time} #{pair.name}, #{pair.kind_humanize}"
+            span.badge.badge-primary.badge-pill = pair.place
+      .card-footer.text-muted
+        = t('weekday.updated_at', days: time_ago_in_words(weekday.updated_at))
+    br
