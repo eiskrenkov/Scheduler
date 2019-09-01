@@ -1,10 +1,12 @@
 module GroupsHelper
   def groups_for_select
     content_tag(:ul, class: 'nav nav-pills nav-fill') do
-      groups = Group.all.map do |group|
+      groups = collection.map.with_index do |group, index|
         content_tag(:li, class: 'nav-item') do
-          css = 'nav-link ' + (cookies[:group_id].to_i == group.id ? 'active' : '')
-          link_to(group.name, dashboard_set_group_path(group_id: group.id), method: :post, class: css)
+          link_to(
+            group.name, dashboard_set_group_path(group_id: group.id),
+            method: :post, class: group_pill_class(group, index)
+          )
         end
       end
 
@@ -14,5 +16,15 @@ module GroupsHelper
 
   def current_group
     Group.find_by(id: cookies[:group_id].to_i) || Group.first
+  end
+
+  private
+
+  def group_pill_class(group, index)
+    ['nav-link', ('active' if append_active?(group, index))].join(' ')
+  end
+
+  def append_active?(group, index)
+    cookies[:group_id].blank? && index.zero? || cookies[:group_id].to_i == group.id
   end
 end

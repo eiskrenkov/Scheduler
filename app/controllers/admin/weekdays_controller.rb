@@ -1,6 +1,8 @@
-class Admin::WeekdaysController < ApplicationController
+class Admin::WeekdaysController < InheritedResources::Base
+  defaults resource_class: Weekday
+
   before_action :authenticate_web_user!
-  before_action :set_weekday, only: %i[edit update] # rubocop:disable Rails/LexicallyScopedActionFilter
+  before_action :set_weekday, only: %i[edit update]
 
   def update
     respond_to do |format|

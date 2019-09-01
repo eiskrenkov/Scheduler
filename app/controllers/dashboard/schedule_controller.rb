@@ -1,4 +1,6 @@
-class Dashboard::ScheduleController < ApplicationController
+class Dashboard::ScheduleController < InheritedResources::Base
+  defaults resource_class: Group
+
   navigation_section :dashboard
 
   def set_group

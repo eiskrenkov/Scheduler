@@ -1,33 +1,36 @@
 #devise {
- 	padding: 80px;
+  // padding-top: 50px;
 
- 	.card {
- 		margin: 0 auto;
- 		width: 600px;
- 		padding: 30px;
- 	}
+  .card {
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 30px;
+  }
 
- 	h2 {
- 		margin: 20px;
- 		font-size: 30px;
- 		text-align: center;
- 		font-weight: bold;
- 		color: #444444;
- 	}
+  h2 {
+    margin: 20px;
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    color: #444444;
+  }
 
- 	p {
- 		text-align: center;
- 		font-size: 14px;
- 		color: gray;
- 	}
+  p {
+    text-align: center;
+    font-size: 14px;
+    color: gray;
+  }
 
- 	.btn {
- 		opacity: 0.85;
- 		width: 250px;
- 	}
+  p.alert {
+    color: red;
+  }
 
- 	.btn:hover {
- 		opacity: 1;
- 		color: white;
- 	}
+  .btn {
+    opacity: 0.85;
+  }
+
+  .btn:hover {
+    opacity: 1;
+    color: white;
+  }
  }

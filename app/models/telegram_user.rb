@@ -3,9 +3,11 @@
 # Table name: telegram_users
 #
 #  id          :bigint           not null, primary key
-#  username    :string(255)      not null
-#  telegram_id :integer          not null
 #  group_id    :bigint
+#  telegram_id :integer          not null
+#  first_name  :string(255)      default(""), not null
+#  last_name   :string(255)      default(""), not null
+#  username    :string(255)      default(""), not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #

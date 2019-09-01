@@ -1,20 +1,16 @@
-.container id='devise'
+#devise
   .card.card-background
-    h2 Skaffer Admin
-    p = t('login.login_to_manage')
+    h2 = application_name
+    p = t('login.explanation')
 
-    = login_form do |f|
+    = simple_form_for resource, url: session_path(resource_name) do |f|
       .form-group
-        label Email
-        = f.email_field :email, placeholder: 'Email', class: 'form-control form-background'
+        = f.input :email
 
       .form-group
-        label Password
-        = f.password_field :password, placeholder: 'Password', class: 'form-control form-background'
+        = f.input :password
 
-      br
-
-      p = alert
+      p.alert = alert
 
       .text-center
-        button type='submit' class='btn btn-primary btn-lg' Login
+        = submit_button(t('shared.log_in'))

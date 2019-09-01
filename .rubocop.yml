@@ -11,6 +11,9 @@ AllCops:
 Rails:
   Enabled: true
 
+Rails/LexicallyScopedActionFilter:
+  Enabled: false
+
 Bundler/OrderedGems:
   Enabled: false
 

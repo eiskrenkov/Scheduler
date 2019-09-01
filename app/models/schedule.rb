@@ -12,6 +12,10 @@ class Schedule < ApplicationRecord
   belongs_to :group
   has_many :weekdays, dependent: :destroy
 
+  def working_days
+    weekdays.except_sunday
+  end
+
   def weekdays
     super.presence || create_weekdays
   end

@@ -5,8 +5,19 @@ module NavbarHelper
     end
   end
 
+  def navbar_toggle_button
+    icon_button(
+      'bars', class: 'navbar-toggler', data: { toggle: 'collapse', target: '#collapse-content' },
+              aria: { controls: 'collapse-content', expanded: false, label: 'toggle' }
+    )
+  end
+
+  def navbar_toggle_content(&block)
+    content_tag(:div, capture(&block), class: 'collapse navbar-collapse', id: 'collapse-content')
+  end
+
   def navbar_brand
-    link_to("#{Rails.application.class.parent_name} #{Rails.env.capitalize}", root_path, class: 'navbar-brand')
+    link_to(application_name, root_path, class: 'navbar-brand')
   end
 
   def navbar_links_set(position: :auto, &block)
@@ -20,11 +31,29 @@ module NavbarHelper
     content_tag(:li, link_to(text, url, options.merge(css)), class: 'nav-item')
   end
 
+  def navbar_schedule_url
+    navbar_link([I18n.t('navbar.schedule.title'), schedule_updated_ago].join(' '), root_path, section: :dashboard)
+  end
+
+  def navbar_bot_url
+    navbar_link(
+      safe_join([fa_icon('window-restore'), ' ', t('navbar.bot')]),
+      'https://t.me/SkafferBot', target: '_blank'
+    )
+  end
+
+  def navbar_repo_url
+    navbar_link(
+      safe_join([fa_icon('github'), ' ', t('navbar.github')]),
+      'https://github.com/eiskrenkov/SkafferBot', target: '_blank'
+    )
+  end
+
   def navbar_authentication_url
-    if current_web_user
-      navbar_link(t('navbar.sign_out'), destroy_web_user_session_path, method: :delete)
-    else
-      navbar_link(t('navbar.sign_in'), new_web_user_session_path)
-    end
+    return if current_web_user
+
+    navbar_link(
+      safe_join([fa_icon('sign-in'), ' ', t('shared.log_in')]), new_web_user_session_path
+    )
   end
 end
