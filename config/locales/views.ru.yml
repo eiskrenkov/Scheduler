@@ -11,6 +11,7 @@ ru:
       updated_ago: (обновлено %{ago} назад)
     bot: Telegram Бот
     github: GitHub
+    trello: Trello
 
   login:
     explanation: Войдите для управления расписанием

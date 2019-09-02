@@ -35,6 +35,13 @@ module NavbarHelper
     navbar_link([I18n.t('navbar.schedule.title'), schedule_updated_ago].join(' '), root_path, section: :dashboard)
   end
 
+  def navbar_trello_url
+    navbar_link(
+      safe_join([fa_icon('trello'), ' ', t('navbar.trello')]),
+      'https://trello.com/b/cBcOLtfp', target: '_blank'
+    )
+  end
+
   def navbar_bot_url
     navbar_link(
       safe_join([fa_icon('window-restore'), ' ', t('navbar.bot')]),
