@@ -6,6 +6,7 @@ ru:
     cancel: Отменить
 
   navbar:
+    title: РФиКТ 3 Курс
     schedule:
       title: Расписание
       updated_ago: (обновлено %{ago} назад)

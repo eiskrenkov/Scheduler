@@ -17,7 +17,7 @@ module NavbarHelper
   end
 
   def navbar_brand
-    link_to(application_name, root_path, class: 'navbar-brand')
+    link_to(t('navbar.title'), root_path, class: 'navbar-brand')
   end
 
   def navbar_links_set(position: :auto, &block)
