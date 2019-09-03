@@ -5,12 +5,12 @@
 #  id         :bigint           not null, primary key
 #  name       :string(255)      not null
 #  start_time :string(255)      not null
-#  end_time   :string(255)      not null
-#  kind       :string(255)
-#  place      :string(255)
+#  kind       :string(255)      default(""), not null
+#  place      :string(255)      default(""), not null
 #  weekday_id :bigint
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  teacher    :string(255)      default(""), not null
 #
 
 class Pair < ApplicationRecord
@@ -18,5 +18,5 @@ class Pair < ApplicationRecord
 
   has_enumeration_for :kind, with: ::PairKinds, create_scopes: true, create_helpers: true
 
-  validates :name, :start_time, :end_time, presence: true
+  validates :name, :start_time, presence: true
 end

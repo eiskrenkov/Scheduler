@@ -21,10 +21,10 @@ ru:
 
     pair:
       name: Название
+      teacher: Препод
       place: Место
       kind: Тип
       start_time: Начало
-      end_time: Конец
       add: Добавить пару
 
   confirmations:

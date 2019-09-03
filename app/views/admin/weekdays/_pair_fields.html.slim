@@ -1,7 +1,7 @@
 .form-group.row.nested-fields
   .col-2 = f.input :start_time
-  .col-2 = f.input :end_time
   .col-3 = f.input :name
+  .col-2 = f.input :teacher
   .col-2 = f.input :kind, collection: PairKinds.to_a, include_blank: true
   .col-2 = f.input :place
   .col-1 = remove_association_button f

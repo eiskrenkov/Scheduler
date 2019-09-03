@@ -6,6 +6,7 @@ class Telegram::PairPresenter < BasePresenter
   end
 
   def present
-    ["#{pair.start_time} - #{pair.name}", pair.kind_humanize, pair.place].compact.join(', ')
+    ["#{pair.start_time} - #{pair.name}", pair.teacher, pair.kind_humanize, pair.place]
+      .reject(&:blank?).join(', ') # Do not present empty fields
   end
 end

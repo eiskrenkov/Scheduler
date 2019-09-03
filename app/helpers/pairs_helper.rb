@@ -1,5 +1,6 @@
 module PairsHelper
   def pair_content(pair)
-    ["#{pair.start_time} - #{pair.name}", pair.kind_humanize].compact.join(', ')
+    ["#{pair.start_time} - #{pair.name}", pair.teacher, pair.kind_humanize]
+      .reject(&:blank?).join(', ') # Do not present empty fields
   end
 end

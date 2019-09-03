@@ -22,6 +22,6 @@ class Admin::WeekdaysController < InheritedResources::Base
   end
 
   def weekday_params
-    params.require(:weekday).permit(pairs_attributes: %i[id name kind start_time end_time place _destroy])
+    params.require(:weekday).permit(pairs_attributes: %i[id name kind start_time teacher place _destroy])
   end
 end
