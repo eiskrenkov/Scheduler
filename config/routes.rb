@@ -10,10 +10,13 @@ Rails.application.routes.draw do
   end
 
   namespace :dashboard do
+    resources :today, only: :index
+    resources :schedule, only: :index
+
     post 'set_group' => 'schedule#set_group'
     post 'set_theme' => 'schedule#set_theme'
 
-    root to: 'schedule#index'
+    root to: 'today#index'
   end
 
   namespace :api do

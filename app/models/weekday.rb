@@ -20,7 +20,15 @@ class Weekday < ApplicationRecord
 
   has_enumeration_for :name, with: ::Weekdays
 
+  after_update :update_schedule_timestamp
+
   def weekend?
     Weekdays::WEEKENDS.include?(name)
+  end
+
+  private
+
+  def update_schedule_timestamp
+    schedule.touch
   end
 end

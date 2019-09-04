@@ -32,7 +32,14 @@ module NavbarHelper
   end
 
   def navbar_schedule_url
-    navbar_link([I18n.t('navbar.schedule.title'), schedule_updated_ago].join(' '), root_path, section: :dashboard)
+    navbar_link(
+      t('navbar.schedule', ago: time_ago_in_words(current_group.schedule.updated_at)),
+      dashboard_schedule_index_path, section: :schedule
+    )
+  end
+
+  def navbar_today_url
+    navbar_link(t('navbar.today'), dashboard_today_index_path, section: :today)
   end
 
   def navbar_trello_url
