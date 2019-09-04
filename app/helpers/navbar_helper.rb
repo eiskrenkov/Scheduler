@@ -1,6 +1,6 @@
 module NavbarHelper
   def navbar_tag(&block)
-    content_tag(:nav, class: "nav navbar navbar-#{Rails.env} navbar-expand-lg fixed-top navbar-dark bg-dark") do
+    content_tag(:nav, class: "nav navbar navbar-#{Rails.env} navbar-expand-lg fixed-top navbar-#{current_theme}") do
       content_tag(:div, capture(&block), class: 'container')
     end
   end
@@ -53,6 +53,13 @@ module NavbarHelper
     navbar_link(
       safe_join([fa_icon('github'), ' ', t('navbar.github')]),
       'https://github.com/eiskrenkov/SkafferBot', target: '_blank'
+    )
+  end
+
+  def navbar_set_theme_url
+    new_theme = available_themes.find { |theme| theme != cookies[:theme] }
+    navbar_link(
+      fa_icon('adjust'), dashboard_set_theme_path(theme: new_theme), method: :post
     )
   end
 

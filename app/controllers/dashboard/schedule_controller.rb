@@ -8,4 +8,10 @@ class Dashboard::ScheduleController < InheritedResources::Base
 
     redirect_to root_path
   end
+
+  def set_theme
+    cookies[:theme] = params.fetch(:theme, :light)
+
+    redirect_to root_path
+  end
 end

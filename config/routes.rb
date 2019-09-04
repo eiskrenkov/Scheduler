@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   namespace :dashboard do
     post 'set_group' => 'schedule#set_group'
+    post 'set_theme' => 'schedule#set_theme'
 
     root to: 'schedule#index'
   end
