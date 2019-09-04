@@ -12,6 +12,7 @@ gem 'enumerate_it'
 gem 'cocoon'
 gem 'simple_form'
 gem 'inherited_resources'
+gem 'newrelic_rpm'
 
 # Telegram
 gem 'telegram-bot'
