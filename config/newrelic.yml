@@ -1,5 +1,5 @@
 common: &default_settings
-  license_key: <%= Rails.application.credentials.newrelic[:license_key] %>
+  license_key: <%= Rails.application.credentials.dig(:newrelic, :license_key) %>
 
   app_name: SkafferBot
 
