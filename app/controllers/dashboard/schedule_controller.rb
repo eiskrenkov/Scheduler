@@ -6,7 +6,7 @@ class Dashboard::ScheduleController < InheritedResources::Base
   def set_group
     cookies[:group_id] = params[:group_id]
 
-    redirect_to root_path
+    redirect_back fallback_location: root_path
   end
 
   def set_theme
