@@ -1,5 +1,5 @@
 = groups_for_select
 br
 
-.row.justify-content-center
-  = render current_group.schedule.weekdays.find_by(number: Time.now.wday)
+.row
+  = render current_group.schedule.weekdays.where(number: [Time.now.wday, Time.now.next_day.wday])
