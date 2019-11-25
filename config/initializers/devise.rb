@@ -7,12 +7,12 @@ Devise.setup do |config|
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and
   # when used to authenticate or find a user.
-  config.case_insensitive_keys = [:email]
+  config.case_insensitive_keys = [:username]
 
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or
   # modifying a user and when used to authenticate or find a user.
-  config.strip_whitespace_keys = [:email]
+  config.strip_whitespace_keys = [:username]
 
   # By default Devise will store the user in session. Skip storage for
   # particular strategies by setting this option.
@@ -32,4 +32,8 @@ Devise.setup do |config|
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
+
+  # Telegram omniauth strategy
+  telegram_bot_credentials = Rails.application.credentials.telegram_bot
+  config.omniauth :telegram, telegram_bot_credentials.fetch(:name), telegram_bot_credentials.fetch(:token)
 end

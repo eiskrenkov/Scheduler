@@ -15,6 +15,7 @@ gem 'inherited_resources'
 
 # Telegram
 gem 'telegram-bot'
+gem 'omniauth-telegram'
 
 # Frontend
 gem 'bootstrap'
@@ -24,6 +25,7 @@ gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'font-awesome-rails'
+gem 'bootstrap-select-rails'
 
 # Additional
 gem 'turbolinks'

@@ -1,7 +1,9 @@
+# rubocop:disable Metrics/BlockLength
 Rails.application.routes.draw do
-  telegram_webhook Telegram::ScheduleController
+  telegram_webhook Telegram::PersonalController
 
-  devise_for :web_users
+  devise_for :users, controllers: { registrations: 'users/registrations',
+                                    omniauth_callbacks: 'users/omniauth_callbacks' }
 
   namespace :admin do
     resources :weekdays do
@@ -9,12 +11,17 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :dashboard do
+  namespace :personal do
     resources :today, only: :index
     resources :schedule, only: :index
 
-    post 'set_group' => 'schedule#set_group'
-    post 'set_theme' => 'schedule#set_theme'
+    resources :weekdays do
+      resources :pairs, only: %i[destroy]
+    end
+
+    post :set_group, to: 'schedule#set_group'
+    get :profile, to: 'user#show'
+    patch :update_profile, to: 'user#update'
 
     root to: 'today#index'
   end
@@ -28,5 +35,8 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: redirect('/dashboard')
+  post 'set_theme' => 'common#set_theme'
+
+  root to: 'common#index'
 end
+# rubocop:enable Metrics/BlockLength

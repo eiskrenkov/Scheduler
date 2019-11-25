@@ -20,3 +20,15 @@
 //= require bootstrap
 
 //= require cocoon
+
+//= require bootstrap-select
+
+$(document).on('turbolinks:load', function() {
+   $(window).trigger('load.bs.select.data-api');
+});
+
+$(document).ready(function() {
+  $('#groups-pills a:first').tab('show')
+});
+
+

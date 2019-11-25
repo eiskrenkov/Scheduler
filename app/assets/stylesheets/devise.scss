@@ -13,7 +13,7 @@
     font-weight: bold;
   }
 
-  p {
+  p, a.redirect {
     text-align: center;
     font-size: 14px;
     color: gray;
@@ -21,6 +21,10 @@
 
   p.alert {
     color: red;
+  }
+
+  .text-center {
+    margin-bottom: 7px;
   }
 
 }

@@ -1,0 +1,20 @@
+.col-md-6
+  .card
+    h5.card-header = link_to weekday_name_with_mark(weekday), edit_personal_weekday_path(personal_weekday)
+
+    .list-group.list-group-flush
+      - if weekday.pairs.present?
+        - weekday.pairs.each do |pair|
+          = list_item
+            = pair_content pair
+            = pill pair.place
+      - else
+        = list_item { t('weekday.group_free') }
+
+    - if defined?(personal_weekday)
+      .list-group.list-group-flush
+        - personal_weekday.pairs.each do |pair|
+          = list_item
+            = pair_content pair
+            = pill pair.place
+  br

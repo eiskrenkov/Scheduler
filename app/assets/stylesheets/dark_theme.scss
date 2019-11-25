@@ -42,6 +42,28 @@ body.theme-dark {
     }
   }
 
+  .dropdown-toggle {
+    background-color: $light-color;
+    border-color: $light-color;
+  }
+
+  .dropdown-menu {
+    background-color: $neutral-color;
+  }
+
+  .dropdown-item {
+    &.selected {
+      background-color: $accent-color;
+      color: white;
+    }
+
+    &:hover {
+      &:not(.selected) {
+        background-color: $light-color !important;
+      }
+    }
+  }
+
   .btn-primary {
     background-color: $accent-color;
   }

@@ -1,16 +1,16 @@
 #devise
   .card.card-background
     h2 = application_name
-    p = t('login.explanation')
+    p = t('explanations.login')
 
     = simple_form_for resource, url: session_path(resource_name) do |f|
-      .form-group
-        = f.input :email
-
-      .form-group
-        = f.input :password
+      = f.input :username
+      = f.input :password
 
       p.alert = alert
 
       .text-center
-        = submit_button(t('shared.log_in'))
+        = submit_button t('shared.log_in')
+
+      .text-center
+        = link_to t('devise.not_registered'), new_user_registration_path, class: 'redirect'

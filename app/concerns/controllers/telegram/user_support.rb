@@ -1,13 +1,19 @@
 module Controllers::Telegram::UserSupport
   extend ActiveSupport::Concern
 
-  def telegram_user
-    @telegram_user ||= begin
-      TelegramUser.find_or_create_by(telegram_id: from['id']) do |user|
-        user.username = from.fetch('username', '')
-        user.first_name = from.fetch('first_name', '')
-        user.last_name = from.fetch('last_name', '')
-      end
+  included do
+    rescue_from 'Exceptions::UserDoesNotExist' do
+      send_message t('telegram.errors.user_does_not_exist')
     end
+  end
+
+  def current_user
+    @current_user ||= User.find_by(telegram_id: from['id'])
+  end
+
+  private
+
+  def check_user_existance
+    raise Exceptions::UserDoesNotExist unless current_user
   end
 end

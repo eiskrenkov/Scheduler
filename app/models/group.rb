@@ -9,17 +9,12 @@
 #
 
 class Group < ApplicationRecord
-  has_one :schedule, dependent: :destroy
+  has_one :schedule, as: :target, dependent: :destroy, inverse_of: :target
+  has_many :users, dependent: :restrict_with_error
 
-  validates :name, presence: true
+  delegate :weekdays, to: :schedule
 
-  def schedule
-    super || create_schedule
-  end
+  validates :name, presence: true, uniqueness: true
 
-  private
-
-  def create_schedule
-    Schedule.create(group_id: id)
-  end
+  before_create :build_schedule
 end

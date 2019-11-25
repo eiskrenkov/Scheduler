@@ -1,6 +1,6 @@
 ru:
   telegram:
-    base:
+    common:
       start:
         "Привет, %{username}! Меня зовут Skaffer и я создан для того,
         чтобы тебе было легче ориентироваться в расписании своей группы.
@@ -21,23 +21,22 @@ ru:
         \n/wed - Расписание на Среду
         \n/thu - Расписание на Четверг
         \n/fri - Расписание на Пятницу"
-      action_missing: |
-        Я тебя не понял, %{username}.
-        Используй /help, чтобы узнать, что я умею.
 
     schedule:
-      header: "Расписание для группы %{group}"
-      current_group: "Ваша текущая группа: %{group}"
+      header: Расписание для группы %{group}
+      current_group: 'Ваша текущая группа: %{group}'
 
       weekday:
-        schedule_for: 'Расписание на %{weekday}'
+        schedule_for: Расписание на %{weekday}
         place: аудитория %{number}
 
       success:
         group_assigned: Группа установлена успешно
 
-      errors:
-        no_group_assigned: Вы не установили группу. Пожалуйста, используйте /set_group <number>, где
-                           <number> - номер вашей группы, например, /set_group 4+5
-        no_schedule_for_group: Расписания для этой группы не существует
-        no_pairs: В этот день у вас нет пар
+    errors:
+      user_does_not_exist: Вы не зарегистрированы в нашей системе.
+                           Пожалуйста, посетите https://skafferbot.herokuapp.com для создания личного аккаунта
+      no_group_assigned: Вы не установили группу. Пожалуйста, используйте /set_group <number>, где
+                         <number> - номер вашей группы, например, /set_group 4+5
+      no_schedule_for_group: Расписания для этой группы не существует
+      no_pairs: В этот день у вас нет пар

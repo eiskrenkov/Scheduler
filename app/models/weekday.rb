@@ -17,6 +17,7 @@ class Weekday < ApplicationRecord
   accepts_nested_attributes_for :pairs, reject_if: :all_blank, allow_destroy: true
 
   scope :except_sunday, -> { where.not(name: Weekdays::SUN) }
+  scope :ordered, -> { order(number: :desc) }
 
   has_enumeration_for :name, with: ::Weekdays
 

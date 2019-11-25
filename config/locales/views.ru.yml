@@ -1,24 +1,38 @@
 ru:
+  activerecord:
+    attributes:
+      user:
+        username: Имя пользователя
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+        group_id: Группа
+
   shared:
     log_in: Войти
     log_out: Выйти
+    profile: Профиль
+    register: Зарегистрироваться
     save: Сохранить
     cancel: Отменить
+    updated: Обновлено %{ago} назад
+    today: Сегодня
+    tomorrow: Завтра
 
   navbar:
     title: РФиКТ 3 Курс
-    today: Сегодня
-    schedule: Расписание
-    schedule_with_time: Расписание (обновлено %{ago} назад)
+    common_schedule: Общее Расписание
+    personal_schedule: Ваше Расписание
+    todays_schedule: Сегодня
     bot: Telegram Бот
     github: GitHub
     trello: Trello
 
-  login:
-    explanation: Войдите для управления расписанием
+  devise:
+    not_registered: Не зарегистрированы?
+    already_registered: Уже зарегистрированы?
 
   weekday:
-    free: В этот день пар нет
+    group_free: В этот день у вашей группы нет пар
 
     pair:
       name: Название
@@ -27,6 +41,21 @@ ru:
       kind: Тип
       start_time: Начало
       add: Добавить пару
+      add_personally: Добавить пару для себя
+
+  group_guard:
+    header: Группа не указана!
+    body: Для отображения персонального расписания необходимо выбрать одну из доступных групп
+    link: Указать группу в профиле
+
+  personal:
+    telegram:
+      usage: Для использования бота необходимо привязать Telegram аккаунт к профилю
+      associate: Связать аккаунты
 
   confirmations:
     are_you_sure: Вы уверены?
+
+  explanations:
+    login: Войдите для управления своим расписанием
+    register: Зарегистрируйтесь для удобного доступа к своему расписанию

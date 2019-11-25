@@ -1,0 +1,4 @@
+= group_is_not_specified_guard
+  .row
+    - personal_nearest_weekdays_for_rendering.each do |data|
+      = render 'personal/weekdays/weekday', weekday: data.first, personal_weekday: data.second

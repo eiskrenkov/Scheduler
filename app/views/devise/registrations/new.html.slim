@@ -1,0 +1,19 @@
+#devise
+  .card.card-background
+    h2 = application_name
+    p = t('explanations.register')
+
+    = link_to 'Sign in with Telegram', user_telegram_omniauth_authorize_path
+
+    = simple_form_for resource, url: registration_path(resource_name) do |f|
+      = f.input :username
+      = f.input :password
+      = f.input :password_confirmation
+      = f.input :group_id, collection: Group.pluck(:name, :id), include_blank: false,
+                                                                input_html: { class: 'selectpicker' }
+
+      .text-center
+        = submit_button t('shared.register')
+
+      .text-center
+        = link_to t('devise.already_registered'), new_user_session_path, class: 'redirect'

@@ -10,13 +10,13 @@ module Controllers::Telegram::ScheduleSupport
   end
 
   def present_schedule_for(weekday_number)
-    weekday = telegram_user.group.schedule.weekdays.find { |w| w.number == weekday_number }
-    return I18n.t('telegram.schedule.errors.no_pairs') if weekday.pairs.blank?
+    weekday = current_user.group.schedule.weekdays.find { |w| w.number == weekday_number }
+    return I18n.t('telegram.errors.no_pairs') if weekday.pairs.blank?
 
     Telegram::WeekdayPresenter.new(weekday).present
   end
 
   def present_schedule
-    Telegram::SchedulePresenter.new(telegram_user).present
+    Telegram::SchedulePresenter.new(current_user).present
   end
 end
