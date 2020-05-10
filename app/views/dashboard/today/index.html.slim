@@ -1,5 +1,6 @@
 = groups_for_select
 br
 
-.row
-  = render current_group.schedule.weekdays.where(number: [Time.now.wday, Time.now.next_day.wday])
+- if current_group
+  .row
+    = render current_group.schedule.weekdays.where(number: [Time.now.wday, Time.now.next_day.wday])

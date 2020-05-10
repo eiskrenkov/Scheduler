@@ -32,10 +32,13 @@ module NavbarHelper
   end
 
   def navbar_schedule_url
-    navbar_link(
-      t('navbar.schedule', ago: time_ago_in_words(current_group.schedule.updated_at)),
-      dashboard_schedule_index_path, section: :schedule
-    )
+    text = if current_group
+             t('navbar.schedule_with_time', ago: time_ago_in_words(current_group.schedule.updated_at))
+           else
+             t('navbar.schedule')
+           end
+
+    navbar_link(text, dashboard_schedule_index_path, section: :schedule)
   end
 
   def navbar_today_url

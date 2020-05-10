@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '2.7.0'
 
 # Core
-gem 'rails', '~> 5.2.3'
+gem 'rails', '~> 6.0'
 gem 'puma'
 gem 'mysql2'
 gem 'devise'
@@ -12,7 +12,6 @@ gem 'enumerate_it'
 gem 'cocoon'
 gem 'simple_form'
 gem 'inherited_resources'
-gem 'newrelic_rpm'
 
 # Telegram
 gem 'telegram-bot'

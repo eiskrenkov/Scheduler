@@ -8,7 +8,8 @@ ru:
   navbar:
     title: РФиКТ 3 Курс
     today: Сегодня
-    schedule: Расписание (обновлено %{ago} назад)
+    schedule: Расписание
+    schedule_with_time: Расписание (обновлено %{ago} назад)
     bot: Telegram Бот
     github: GitHub
     trello: Trello
@@ -21,7 +22,7 @@ ru:
 
     pair:
       name: Название
-      teacher: Препод
+      teacher: Преподаватель
       place: Место
       kind: Тип
       start_time: Начало
