@@ -16,5 +16,13 @@ class Group < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
-  before_create :build_schedule
+  def schedule
+    super || create_schedule
+  end
+
+  private
+
+  def create_schedule
+    Schedule.create(target_id: id, target_type: 'Group')
+  end
 end

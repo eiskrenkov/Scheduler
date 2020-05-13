@@ -1,7 +1,7 @@
 class Telegram::PersonalController < Telegram::BaseController
   include Controllers::Telegram::ScheduleSupport
 
-  before_action :check_user_existance, except: UNAUTHORIZED_COMMANDS
+  before_action :check_user_existence, except: UNAUTHORIZED_COMMANDS
 
   # Common
   def start!(*)

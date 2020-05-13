@@ -2,5 +2,6 @@
   .row
     - personal_weekdays_for_rendering.each do |data|
       = render 'personal/weekdays/weekday', weekday: data.first, personal_weekday: data.second
-  / hr
-  /   .text-center = t('shared.updated', ago: time_ago_in_words(current_user_schedule.updated_at))
+  hr
+  .text-center = t('shared.updated', ago: time_ago_in_words(current_user_group_schedule.updated_at))
+  br

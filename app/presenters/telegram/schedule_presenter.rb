@@ -8,16 +8,14 @@ class Telegram::SchedulePresenter < BasePresenter
   def present
     return unless user.group
 
-    I18n.t('telegram.schedule.header', group: user.group.name) + present_weekdays
+    [I18n.t('telegram.schedule.header', group: user.group.name), present_weekdays].join("\n\n")
   end
 
   private
 
   def present_weekdays
     user.group.schedule.weekdays.map do |weekday|
-      next if weekday.pairs.blank?
-
-      Telegram::WeekdayPresenter.new(weekday).present
+      Telegram::WeekdayPresenter.new(weekday).present if weekday.pairs.present?
     end.join("\n\n")
   end
 end

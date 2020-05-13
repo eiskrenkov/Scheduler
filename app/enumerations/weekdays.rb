@@ -1,5 +1,5 @@
 class Weekdays < EnumerateIt::Base
-  associate_values :sun, :mon, :tue, :wed, :thu, :fri, :sat
+  associate_values :mon, :tue, :wed, :thu, :fri, :sat, :sun
 
   WEEKENDS = [SAT, SUN].freeze
 end

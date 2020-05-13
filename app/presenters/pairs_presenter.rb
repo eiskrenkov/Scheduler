@@ -6,7 +6,7 @@ class PairsPresenter < BasePresenter
   end
 
   def present
-    pairs = Weekday.find_by(id: @weekday_id).pairs
+    pairs = Weekday.last(2).first.pairs
     pairs.map { |pair| pair.attributes.except(*EXCLUDED_FIELDS) }
   end
 end

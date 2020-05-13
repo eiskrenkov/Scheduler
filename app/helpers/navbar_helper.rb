@@ -18,7 +18,7 @@ module NavbarHelper
 
   def navbar_brand
     title = t('navbar.title')
-    title << " (#{current_user.group.name})" if user_signed_in? && current_user.group
+    title << ' ' + t('navbar.group', name: current_user.group.name) if user_signed_in? && current_user.group
     link_to(title, root_path, class: 'navbar-brand')
   end
 

@@ -3,9 +3,12 @@ module WeekdaysHelper
     link_to_remove_association fa_icon('trash'), form, class: 'btn btn-danger pull-right'
   end
 
-  def list_item(&block)
-    content_tag(:div, capture(&block),
-                class: 'list-group-item list-group-item-action d-flex justify-content-between align-items-center')
+  def list_item(options = {}, &block)
+    style = merge_css(
+      options.delete(:class), 'list-group-item list-group-item-action d-flex justify-content-between align-items-center'
+    )
+
+    content_tag(:div, capture(&block), options.merge(class: style))
   end
 
   def weekday_title(weekday)

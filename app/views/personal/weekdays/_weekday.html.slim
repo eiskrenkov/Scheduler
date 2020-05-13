@@ -14,7 +14,7 @@
     - if defined?(personal_weekday)
       .list-group.list-group-flush
         - personal_weekday.pairs.each do |pair|
-          = list_item
+          = list_item class: 'list-group-item-primary'
             = pair_content pair
             = pill pair.place
   br

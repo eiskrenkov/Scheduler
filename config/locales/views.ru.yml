@@ -17,6 +17,7 @@ ru:
     updated: Обновлено %{ago} назад
     today: Сегодня
     tomorrow: Завтра
+    log_in_with_telegram: Войти с Telegram
 
   navbar:
     title: РФиКТ 3 Курс
@@ -26,6 +27,7 @@ ru:
     bot: Telegram Бот
     github: GitHub
     trello: Trello
+    group: (Группа %{name})
 
   devise:
     not_registered: Не зарегистрированы?

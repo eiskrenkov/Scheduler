@@ -21,7 +21,7 @@ class Schedule < ApplicationRecord
   end
 
   def nearest_days
-    weekdays.where(number: [Time.now.wday, Time.now.next_day.wday]).ordered
+    weekdays.where(number: [Time.now.wday, Time.now.next_day.wday])
   end
 
   private

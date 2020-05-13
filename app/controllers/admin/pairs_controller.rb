@@ -1,3 +1,3 @@
-class Admin::PairsController < Admin::PermissionController
+class Admin::PairsController < Admin::AuthorizedController
   defaults resource_class: Pair
 end
