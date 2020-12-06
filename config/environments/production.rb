@@ -6,8 +6,6 @@ Rails.application.configure do
 
   config.telegram_updates_controller.session_store = :redis_store, { expires_in: 1.month }
 
-  # routes.default_url_options = { host: 'skafferbot.herokuapp.com', protocol: 'https' }
-
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
@@ -65,7 +63,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "SkafferBot_#{Rails.env}"
+  # config.active_job.queue_name_prefix = "Scheduler_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
 

@@ -7,10 +7,10 @@ default: &default
 
 development:
   <<: *default
-  database: SkafferBot_development
+  database: Scheduler_development
 
 production:
   <<: *default
-  database: SkafferBot_production
-  username: SkafferBot
+  database: Scheduler_production
+  username: Scheduler
   password: "<%= Rails.application.credentials.dig(:database, :password) %>"

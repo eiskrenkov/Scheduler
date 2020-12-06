@@ -66,14 +66,14 @@ module NavbarHelper
   def navbar_bot_url
     navbar_link(
       safe_join([fa_icon('window-restore'), ' ', t('navbar.bot')]),
-      'https://t.me/SkafferBot', target: '_blank'
+      'https://t.me/scheduler_app_bot', target: '_blank'
     )
   end
 
   def navbar_repo_url
     navbar_link(
       safe_join([fa_icon('github'), ' ', t('navbar.github')]),
-      'https://github.com/eiskrenkov/SkafferBot', target: '_blank'
+      'https://github.com/eiskrenkov/Scheduler', target: '_blank'
     )
   end
 

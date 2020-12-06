@@ -2,7 +2,7 @@ ru:
   telegram:
     common:
       start:
-        "Привет, %{username}! Меня зовут Skaffer и я создан для того,
+        "Привет, %{username}! Меня зовут Scheduler и я создан для того,
         чтобы тебе было легче ориентироваться в расписании своей группы.
 
         Для начала используй /set_group <number>, где <number> - номер твоей группы, например, /set_group 4+5
@@ -34,8 +34,7 @@ ru:
         group_assigned: Группа установлена успешно
 
     errors:
-      user_does_not_exist: Вы не зарегистрированы в нашей системе.
-                           Пожалуйста, посетите https://skafferbot.herokuapp.com для создания личного аккаунта
+      user_does_not_exist: Вы не зарегистрированы в нашей системе!
       no_group_assigned: Вы не установили группу. Пожалуйста, используйте /set_group <number>, где
                          <number> - номер вашей группы, например, /set_group 4+5
       no_schedule_for_group: Расписания для этой группы не существует
