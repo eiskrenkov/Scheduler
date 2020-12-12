@@ -43,6 +43,10 @@ Metrics/MethodLength:
   Exclude:
   - db/migrate/*
 
+Metrics/BlockLength:
+  Exclude:
+  - config/routes.rb
+
 Naming/PredicateName:
   Enabled: false
 

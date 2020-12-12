@@ -1,0 +1,30 @@
+ru:
+  activerecord:
+    models:
+      pair:
+        one: Пара
+        few: Пары
+        many: Пар
+        other: Пары
+    attributes:
+      user:
+        username: Имя пользователя
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+        group_id: Группа
+      group:
+        name: Название
+        updated_at: Обновлено
+      pair:
+        name: Название
+        teacher: Преподаватель
+        place: Место
+        kind: Тип
+        start_time: Начало
+      settings:
+        application_title: Название приложения
+        repo_url: URL репозитория
+        telegram_bot_url: URL Telegram бота
+        v_bsu_host: Хост
+        v_bsu_api_secret: API токен
+        v_bsu_application_id: ID приложения

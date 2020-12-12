@@ -1,0 +1,15 @@
+h2 = t('group.schedule', group: parent.name)
+
+.card.collection-grid
+  = table_tag
+    tbody
+      - parent.schedule.weekdays.each do |weekday|
+        tr
+          td = weekday.name_humanize
+          td = "#{weekday.pairs.count} #{Pair.model_name.human(count: weekday.pairs.count)}"
+          td
+            .btn-toolbar
+              = edit_button(weekday, url: edit_admin_group_weekday_path(parent, weekday))
+
+hr
+= cancel_button url: admin_groups_path

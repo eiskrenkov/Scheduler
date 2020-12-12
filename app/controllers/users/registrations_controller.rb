@@ -1,4 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  include Web::NavigationSupport
+  include Web::PageWrapperSupport
+
   private
 
   def sign_up_params

@@ -1,0 +1,21 @@
+.card
+  h5.card-header
+    - if defined?(personal_weekday)
+      = link_to(personal_weekday.name_humanize, edit_personal_weekday_path(personal_weekday))
+    - else
+      = weekday.name_humanize
+
+  .list-group.list-group-flush
+    - if weekday.pairs.present?
+      - weekday.pairs.each do |pair|
+        = list_item
+          = pair_content(pair)
+          = pill(pair.place)
+
+      - if defined?(personal_weekday) && personal_weekday.pairs.present?
+        - personal_weekday.pairs.each do |pair|
+          = list_item class: 'list-group-item-primary'
+            = pair_content(pair)
+            = pill(pair.place)
+    - else
+      = list_item { t('weekday.group_free') }

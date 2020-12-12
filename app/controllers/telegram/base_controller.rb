@@ -1,6 +1,6 @@
 class Telegram::BaseController < Telegram::Bot::UpdatesController
   include Telegram::Bot::UpdatesController::MessageContext
-  include Controllers::Telegram::UserSupport
+  include Telegram::UserSupport
 
   UNAUTHORIZED_COMMANDS = %i[start! ping! help!].freeze
 

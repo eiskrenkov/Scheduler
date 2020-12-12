@@ -1,19 +1,4 @@
 ru:
-  activerecord:
-    attributes:
-      user:
-        username: Имя пользователя
-        password: Пароль
-        password_confirmation: Подтверждение пароля
-        group_id: Группа
-      settings:
-        application_title: Название приложения
-        repo_url: URL репозитория
-        telegram_bot_url: URL Telegram бота
-        v_bsu_host: Хост
-        v_bsu_api_secret: API токен
-        v_bsu_application_id: ID приложения
-
   shared:
     log_in: Войти
     log_out: Выйти
@@ -21,35 +6,43 @@ ru:
     register: Зарегистрироваться
     save: Сохранить
     cancel: Отменить
+    edit: Изменить
+    new: Добавить
+    delete: Удалить
     updated: Обновлено %{ago} назад
     today: Сегодня
     tomorrow: Завтра
     log_in_with_telegram: Войти с Telegram
     settings: Настройки
+    admin: Панель управления
+    schedule: Расписание
+    confirmations:
+      deletion: Вы действительно хотите удалить запись?
 
   navbar:
-    common_schedule: Общее Расписание
-    personal_schedule: Ваше Расписание
-    todays_schedule: Сегодня
+    public_schedule: Общее Расписание
+    personal:
+      today: Сегодня
+      schedule: Ваше Расписание
     settings: Настройки
     bot: Telegram Бот
     github: GitHub
-    trello: Trello
     group: (Группа %{name})
+    admin:
+      settings: Настройки
+      groups: Группы
 
   devise:
     not_registered: Не зарегистрированы?
     already_registered: Уже зарегистрированы?
 
+  group:
+    schedule: Расписание группы %{group}
+
   weekday:
-    group_free: В этот день у вашей группы нет пар
+    group_free: В этот день пар нет
 
     pair:
-      name: Название
-      teacher: Преподаватель
-      place: Место
-      kind: Тип
-      start_time: Начало
       add: Добавить пару
       add_personally: Добавить пару для себя
 

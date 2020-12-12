@@ -3,21 +3,7 @@
 @import "font-awesome";
 @import 'bootstrap-select';
 
-@import "dark_theme";
-@import "light_theme";
+@import "shared";
 
-.navbar-brand {
-  font-weight: 500;
-}
-
-body {
-  padding-top: 80px;
-}
-
-.pull-right {
-	float: right;
-}
-
-.pull-left {
-	float: left;
-}
+@import "themes/dark";
+@import "themes/light";

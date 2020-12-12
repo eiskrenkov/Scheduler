@@ -29,12 +29,10 @@ gem 'font-awesome-rails'
 gem 'bootstrap-select-rails'
 
 # Additional
-gem 'turbolinks'
 gem 'bootsnap', '~> 1.3', require: false
 
 group :development do
   gem 'foreman'
-  gem 'web-console'
   gem 'listen'
   gem 'spring'
   gem 'spring-watcher-listen'
@@ -46,8 +44,6 @@ group :development do
   gem 'rubocop-performance', require: false
   gem 'rubocop-thread_safety', require: false
   gem 'rubocop-rspec', require: false
-
-  gem 'pronto-rubocop', require: false
 end
 
 group :development, :test do

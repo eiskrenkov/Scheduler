@@ -15,7 +15,6 @@ module PersonalHelper
     current_user_group_schedule.nearest_days.zip(current_user_personal_schedule.nearest_days)
   end
 
-  # rubocop:disable Rails/HelperInstanceVariable
   def current_user_personal_schedule
     @current_user_personal_schedule ||= current_user.schedule
   end
@@ -23,5 +22,4 @@ module PersonalHelper
   def current_user_group_schedule
     @current_user_group_schedule ||= current_user.group.schedule
   end
-  # rubocop:enable Rails/HelperInstanceVariable
 end

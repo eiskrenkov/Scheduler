@@ -1,7 +1,7 @@
 module NavbarHelper
   def navbar_tag(&block)
-    content_tag(:nav, class: "nav navbar navbar-#{Rails.env} navbar-expand-lg fixed-top navbar-#{current_theme}") do
-      content_tag(:div, capture(&block), class: 'container')
+    tag.nav(class: "nav navbar navbar-#{Rails.env} navbar-expand-lg fixed-top navbar-#{current_theme}") do
+      tag.div(capture(&block), class: 'container')
     end
   end
 
@@ -13,23 +13,23 @@ module NavbarHelper
   end
 
   def navbar_toggle_content(&block)
-    content_tag(:div, capture(&block), class: 'collapse navbar-collapse', id: 'collapse-content')
+    tag.div(capture(&block), class: 'collapse navbar-collapse', id: 'collapse-content')
   end
 
   def navbar_brand
     title = application_title
-    title << ' ' + t('navbar.group', name: current_user.group.name) if user_signed_in? && current_user.group
+    title << " #{t('navbar.group', name: current_user.group.name)}" if user_signed_in? && current_user.group
     link_to(title, root_path, class: 'navbar-brand')
   end
 
   def navbar_links_set(position: :auto, &block)
-    content_tag(:ul, capture(&block), class: "navbar-nav mr-#{position}")
+    tag.ul(capture(&block), class: "navbar-nav mr-#{position}")
   end
 
   def navbar_link(text, url, options = {})
     active = fetch_navigation_section_from(options)
     css = { class: 'nav-link ' + (active ? 'active' : '') }
-    content_tag(:li, link_to(text, url, options.merge(css)), class: 'nav-item')
+    tag.li(link_to(text, url, options.merge(css)), class: 'nav-item')
   end
 
   def navbar_dropdown(title, options = {}, &block)
@@ -41,51 +41,46 @@ module NavbarHelper
         title, '', class: 'nav-link dropdown-toggle ' + (active ? 'active' : ''), id: indentifier, role: :button,
                    data: { toggle: :dropdown }, aria: { haspopup: true }
       ),
-      content_tag(:div, capture(&block), class: 'dropdown-menu', aria: { labelledby: indentifier })
+      tag.div(capture(&block), class: 'dropdown-menu', aria: { labelledby: indentifier })
     ]
 
-    content_tag(:li, content, class: 'nav-item dropdown')
+    tag.li(content, class: 'nav-item dropdown')
   end
 
   def navbar_dropdown_link(text, url, options = {})
     link_to(text, url, options.merge(class: 'dropdown-item'))
   end
 
-  def navbar_common_schedule_url
-    navbar_link(t('navbar.common_schedule'), root_path, section: :common)
+  def navbar_public_schedule_link
+    navbar_link(t('navbar.public_schedule'), root_path, section: :public)
   end
 
-  def navbar_personal_schedule_url
-    navbar_link(t('navbar.personal_schedule'), personal_schedule_index_path, section: :schedule)
+  def navbar_personal_today_schedule_link
+    navbar_link(t('navbar.personal.today'), personal_today_index_path, section: 'personal/today')
   end
 
-  def navbar_todays_schedule_url
-    navbar_link(t('navbar.todays_schedule'), personal_today_index_path, section: :today)
+  def navbar_personal_schedule_link
+    navbar_link(t('navbar.personal.schedule'), personal_schedule_index_path, section: 'personal/schedule')
   end
 
-  def navbar_bot_url
+  def navbar_bot_link
     navbar_link(
       safe_join([fa_icon('window-restore'), ' ', t('navbar.bot')]),
-      'https://t.me/scheduler_app_bot', target: '_blank'
+      Settings.instance.telegram_bot_url, target: '_blank'
     )
   end
 
-  def navbar_repo_url
+  def navbar_repo_link
     navbar_link(
       safe_join([fa_icon('github'), ' ', t('navbar.github')]),
-      'https://github.com/eiskrenkov/Scheduler', target: '_blank'
+      Settings.instance.repo_url, target: '_blank'
     )
   end
 
-  def navbar_set_theme_url
-    new_theme = available_themes.find { |theme| theme != cookies[:theme] }
+  def navbar_switch_theme_link
     navbar_link(
-      fa_icon('adjust'), set_theme_path(theme: new_theme), method: :post
+      fa_icon('adjust'), switch_theme_index_path, method: :post
     )
-  end
-
-  def navbar_settings_url
-    navbar_link(t('navbar.settings'), admin_settings_path, section: :settings)
   end
 
   def navbar_authentication_section
@@ -101,6 +96,9 @@ module NavbarHelper
       safe_join [
         navbar_dropdown_link(
           safe_join([fa_icon('user'), ' ', t('shared.profile')]), personal_profile_path
+        ),
+        navbar_dropdown_link(
+          safe_join([fa_icon('cog'), ' ', t('shared.admin')]), admin_root_path
         ),
         navbar_dropdown_link(
           safe_join([fa_icon('sign-out'), ' ', t('shared.log_out')]), destroy_user_session_path, method: :delete

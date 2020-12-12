@@ -1,36 +1,50 @@
-# rubocop:disable Metrics/BlockLength
 Rails.application.routes.draw do
-  telegram_webhook Telegram::PersonalController
-
-  devise_for :users, controllers: { registrations: 'users/registrations',
+  devise_for :users, controllers: { sessions: 'users/sessions',
+                                    registrations: 'users/registrations',
                                     omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  namespace :admin do
-    resources :settings, only: %i[index] do
-      put :update, on: :collection
-      post :update_v_bsu_settings, on: :collection
+  # Web pages routes
+  scope module: :web do
+    namespace :public do
+      resources :schedule, only: :index
     end
 
-    resources :weekdays do
-      resources :pairs, only: %i[destroy]
+    namespace :personal do
+      resources :today, only: :index
+      resources :schedule, only: :index
+
+      resources :weekdays do
+        resources :pairs, only: %i[destroy]
+      end
+
+      post :set_group, to: 'schedule#set_group'
+      get :profile, to: 'user#show'
+      patch :update_profile, to: 'user#update'
+
+      root to: 'today#index'
+    end
+
+    namespace :admin do
+      resources :settings, only: %i[index] do
+        put :update, on: :collection
+        post :update_v_bsu_settings, on: :collection
+      end
+
+      resources :groups do
+        resources :weekdays, only: %i[index edit update] do
+          resources :pairs, only: %i[destroy]
+        end
+      end
+
+      root to: 'settings#index'
+    end
+
+    resources :theme, only: [] do
+      post :switch, on: :collection
     end
   end
 
-  namespace :personal do
-    resources :today, only: :index
-    resources :schedule, only: :index
-
-    resources :weekdays do
-      resources :pairs, only: %i[destroy]
-    end
-
-    post :set_group, to: 'schedule#set_group'
-    get :profile, to: 'user#show'
-    patch :update_profile, to: 'user#update'
-
-    root to: 'today#index'
-  end
-
+  # API routes
   namespace :api do
     resources :pairs, only: [] do
       collection do
@@ -40,8 +54,8 @@ Rails.application.routes.draw do
     end
   end
 
-  post 'set_theme' => 'common#set_theme'
+  # Telegram routes
+  telegram_webhook Telegram::PersonalController
 
-  root to: 'common#index'
+  root to: 'web/public/schedule#index'
 end
-# rubocop:enable Metrics/BlockLength

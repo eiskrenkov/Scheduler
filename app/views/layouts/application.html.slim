@@ -9,11 +9,9 @@ html
     = csrf_meta_tags
     = csp_meta_tag
 
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
 
-  = themed_body_tag
-    = render 'layouts/navbar'
-    .container-fluid = render_flash_message
-
-    = yield
+= page_wrapper_tag
+  = render 'layouts/application/navbar'
+  = yield

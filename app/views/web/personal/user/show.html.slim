@@ -1,0 +1,18 @@
+.row
+  .col-md-6
+    .card
+      .card-body
+        h5.card-title Web
+        p.card-text = t('group_guard.body')
+
+        = simple_form_for current_user, url: personal_update_profile_path, wrapper: :inline_form do |f|
+          = f.input :group_id, as: :bootstrap_select, collection: Group.pluck(:name, :id), label: false
+          = submit_button 'Сохранить', class: 'pull-right'
+
+  .col-md-6
+    .card
+      .card-body
+        h5.card-title Telegram
+        p.card-text = t('personal.telegram.usage')
+
+        = bootstrap_button t('personal.telegram.associate'), url: root_path

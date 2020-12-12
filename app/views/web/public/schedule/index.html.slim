@@ -1,0 +1,10 @@
+ul.nav.nav-pills.nav-fill#groups-pills
+  - collection.map do |group|
+    li.nav-item = link_to(group.name, "#group_#{group.id}", class: 'nav-link', data: { toggle: :tab })
+
+br
+
+.tab-content
+  - collection.map do |group|
+    .tab-pane.fade id="group_#{group.id}"
+      .row = render_weekdays(group.schedule.working_days)
