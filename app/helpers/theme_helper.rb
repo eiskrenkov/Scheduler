@@ -8,6 +8,6 @@ module ThemeHelper
   end
 
   def themed_body_tag(&block)
-    content_tag(:body, capture(&block), class: "container theme-#{current_theme}")
+    content_tag(:body, capture(&block), class: "theme-#{current_theme}")
   end
 end

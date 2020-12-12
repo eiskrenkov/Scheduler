@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title = application_name
+    title = application_title
 
     meta name='viewport' content='width=device-width, initial-scale=1.0'
     meta name='apple-mobile-web-app-capable' content='yes'
@@ -10,9 +10,10 @@ html
     = csp_meta_tag
 
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = render 'layouts/google_analytics'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   = themed_body_tag
     = render 'layouts/navbar'
+    .container-fluid = render_flash_message
+
     = yield

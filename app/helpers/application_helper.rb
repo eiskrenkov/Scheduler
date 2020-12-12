@@ -1,6 +1,6 @@
 module ApplicationHelper
-  def application_name
-    "#{Rails.application.class.parent_name} #{Rails.env.capitalize}"
+  def application_title
+    Settings.instance.application_title
   end
 
   def merge_css(*css)

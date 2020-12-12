@@ -12,6 +12,7 @@ gem 'enumerate_it'
 gem 'cocoon'
 gem 'simple_form'
 gem 'inherited_resources'
+gem 'faraday'
 
 # Telegram
 gem 'telegram-bot'
@@ -37,7 +38,7 @@ group :development do
   gem 'listen'
   gem 'spring'
   gem 'spring-watcher-listen'
-  gem 'annotate'
+  gem 'annotate', '~> 2.7.1'
 
   # Code analysis
   gem 'rubocop', require: false

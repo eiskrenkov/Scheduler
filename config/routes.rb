@@ -6,6 +6,11 @@ Rails.application.routes.draw do
                                     omniauth_callbacks: 'users/omniauth_callbacks' }
 
   namespace :admin do
+    resources :settings, only: %i[index] do
+      put :update, on: :collection
+      post :update_v_bsu_settings, on: :collection
+    end
+
     resources :weekdays do
       resources :pairs, only: %i[destroy]
     end

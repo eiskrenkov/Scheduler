@@ -6,6 +6,13 @@ ru:
         password: Пароль
         password_confirmation: Подтверждение пароля
         group_id: Группа
+      settings:
+        application_title: Название приложения
+        repo_url: URL репозитория
+        telegram_bot_url: URL Telegram бота
+        v_bsu_host: Хост
+        v_bsu_api_secret: API токен
+        v_bsu_application_id: ID приложения
 
   shared:
     log_in: Войти
@@ -18,12 +25,13 @@ ru:
     today: Сегодня
     tomorrow: Завтра
     log_in_with_telegram: Войти с Telegram
+    settings: Настройки
 
   navbar:
-    title: РФиКТ 3 Курс
     common_schedule: Общее Расписание
     personal_schedule: Ваше Расписание
     todays_schedule: Сегодня
+    settings: Настройки
     bot: Telegram Бот
     github: GitHub
     trello: Trello
@@ -61,3 +69,10 @@ ru:
   explanations:
     login: Войдите для управления своим расписанием
     register: Зарегистрируйтесь для удобного доступа к своему расписанию
+    v_bsu_host_presense: Не указан хост vBSU
+    v_bsu_api: vBSU API
+
+  flash:
+    v_bsu_settings_update:
+      success: Настройки vBSU успешно обновлены
+      failure: Произошла ошибка при обновлении настроек vBSU

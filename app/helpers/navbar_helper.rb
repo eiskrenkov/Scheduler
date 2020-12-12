@@ -17,7 +17,7 @@ module NavbarHelper
   end
 
   def navbar_brand
-    title = t('navbar.title')
+    title = application_title
     title << ' ' + t('navbar.group', name: current_user.group.name) if user_signed_in? && current_user.group
     link_to(title, root_path, class: 'navbar-brand')
   end
@@ -82,6 +82,10 @@ module NavbarHelper
     navbar_link(
       fa_icon('adjust'), set_theme_path(theme: new_theme), method: :post
     )
+  end
+
+  def navbar_settings_url
+    navbar_link(t('navbar.settings'), admin_settings_path, section: :settings)
   end
 
   def navbar_authentication_section
