@@ -6,6 +6,11 @@ ru:
         few: Пары
         many: Пар
         other: Пары
+      group:
+        one: Группа
+        few: Группы
+        many: Групп
+        other: Групп
     attributes:
       user:
         username: Имя пользователя

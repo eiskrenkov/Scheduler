@@ -13,9 +13,7 @@ Rails.application.routes.draw do
       resources :today, only: :index
       resources :schedule, only: :index
 
-      resources :weekdays do
-        resources :pairs, only: %i[destroy]
-      end
+      resources :weekdays, only: %i[edit update]
 
       post :set_group, to: 'schedule#set_group'
       get :profile, to: 'user#show'
@@ -31,9 +29,7 @@ Rails.application.routes.draw do
       end
 
       resources :groups do
-        resources :weekdays, only: %i[index edit update] do
-          resources :pairs, only: %i[destroy]
-        end
+        resources :weekdays, only: %i[index edit update]
       end
 
       root to: 'settings#index'

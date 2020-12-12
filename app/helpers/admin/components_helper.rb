@@ -22,7 +22,7 @@ module Admin::ComponentsHelper
   def build_bootstrap_resource_card_header(prefix, hide_resource_id)
     card_header_components = [resource_class.model_name.human]
 
-    card_header_components.prepend(prefix.capitalize) if prefix
+    card_header_components.prepend(t("shared.actions.#{prefix}")) if prefix
     card_header_components << "##{resource.id}" if !hide_resource_id && resource.persisted?
 
     card_header_components.join(' ')

@@ -61,7 +61,6 @@ module ButtonsHelper
 
   def cancel_button(options = {})
     default_options = {
-      url: collection_path,
       title: t('shared.cancel')
     }
 

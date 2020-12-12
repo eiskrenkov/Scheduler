@@ -1,6 +1,6 @@
 class Web::Personal::WeekdaysController < Web::Personal::BaseController
   inherit_resources!
-  defaults resource_class: Weekday
+  defaults resource_class: Weekday, route_prefix: :personal
 
   def update
     update! { personal_schedule_index_path }

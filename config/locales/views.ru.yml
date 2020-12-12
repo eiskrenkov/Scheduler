@@ -18,6 +18,9 @@ ru:
     schedule: Расписание
     confirmations:
       deletion: Вы действительно хотите удалить запись?
+    actions:
+      new: Новый(ая)
+      edit: Редактирование
 
   navbar:
     public_schedule: Общее Расписание

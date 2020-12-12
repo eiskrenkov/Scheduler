@@ -1,5 +1,5 @@
 = simple_form_for resource, url: (resource.new_record? ? collection_path : resource_path) do |f|
   = f.input :name
 
-  = cancel_button
+  = cancel_button url: collection_path
   .pull-right = save_button
