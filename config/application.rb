@@ -7,7 +7,7 @@ Bundler.require(*Rails.groups)
 # rubocop:disable Style/ClassAndModuleChildren
 module Scheduler
   class Application < Rails::Application
-    config.load_defaults 5.2
+    config.load_defaults 6.0
 
     config.i18n.default_locale = :ru
   end

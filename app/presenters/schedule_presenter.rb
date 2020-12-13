@@ -8,7 +8,7 @@ class SchedulePresenter < BasePresenter
   private
 
   def present_groups
-    Group.all.map do |group|
+    Group.cached_all.map do |group|
       GroupPresenter.new(group).present
     end
   end
