@@ -19,14 +19,14 @@ class Api::Client::VBsu < Api::Client::Base
   private
 
   def default_api_host
-    Settings.instance.v_bsu_host
+    Settings::VBsu.instance.host
   end
 
   def default_api_secret
-    Settings.instance.v_bsu_api_secret
+    Settings::VBsu.instance.api_secret
   end
 
   def application_id
-    Settings.instance.v_bsu_application_id
+    Settings::VBsu.instance.application_id
   end
 end

@@ -1,6 +1,6 @@
 module ApplicationHelper
   def application_title
-    Settings.instance.application_title
+    Settings::Application.instance.application_title
   end
 
   def merge_css(*css)

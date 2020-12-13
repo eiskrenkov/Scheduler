@@ -13,7 +13,9 @@ ru:
     today: Сегодня
     tomorrow: Завтра
     log_in_with_telegram: Войти с Telegram
-    settings: Настройки
+    application_settings: Настройки
+    v_bsu_settings: Настройки vBSU
+    remote_v_bsu_settings: Настройки сервера vBSU
     admin: Панель управления
     schedule: Расписание
     confirmations:

@@ -1,10 +1,14 @@
-class Web::Admin::SettingsController < Web::Admin::BaseController
+class Web::Admin::VBsuSettingsController < Web::Admin::BaseController
   inherit_resources
-  defaults resource_class: Settings
+  defaults resource_class: Settings::VBsu
 
-  navigation_section 'admin/settings'
+  navigation_section 'admin/v_bsu_settings'
 
-  def update_v_bsu_settings
+  def update
+    update! { request.referer }
+  end
+
+  def update_remote
     if VBsuSettingsUpdater.instance.update(permitted_params[:v_bsu_settings].to_h)
       flash[:notice] = I18n.t('flash.v_bsu_settings_update.success')
     else
@@ -14,14 +18,10 @@ class Web::Admin::SettingsController < Web::Admin::BaseController
     redirect_back fallback_location: root_path
   end
 
-  def update
-    update! { request.referer }
-  end
-
   protected
 
   def resource
-    Settings.instance
+    Settings::VBsu.instance
   end
 
   private

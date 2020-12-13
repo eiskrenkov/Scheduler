@@ -1,0 +1,11 @@
+.card
+  .card-body
+    h2 = "#{t('shared.application_settings')} #{application_title}"
+    hr
+
+    = simple_form_for resource, url: admin_application_settings_path, method: :put do |settings_form|
+      = settings_form.input :application_title
+      = settings_form.input :repo_url
+      = settings_form.input :telegram_bot_url
+
+      = save_button

@@ -23,16 +23,20 @@ Rails.application.routes.draw do
     end
 
     namespace :admin do
-      resources :settings, only: %i[index] do
+      resources :application_settings, only: %i[index] do
         put :update, on: :collection
-        post :update_v_bsu_settings, on: :collection
+      end
+
+      resources :v_bsu_settings, only: %i[index] do
+        put :update, on: :collection
+        post :update_remote, on: :collection
       end
 
       resources :groups do
         resources :weekdays, only: %i[index edit update]
       end
 
-      root to: 'settings#index'
+      root to: 'application_settings#index'
     end
 
     resources :theme, only: [] do
@@ -42,10 +46,11 @@ Rails.application.routes.draw do
 
   # API routes
   namespace :api do
-    resources :pairs, only: [] do
+    resources :schedule, only: %i[index]
+
+    resources :weekdays, only: [] do
       collection do
         get :current
-        get :weekday
       end
     end
   end

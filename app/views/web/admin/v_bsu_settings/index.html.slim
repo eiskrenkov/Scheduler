@@ -1,0 +1,32 @@
+.row
+  .col-sm-6
+    .card
+      .card-body
+        h2 = "#{t('shared.v_bsu_settings')} API"
+        hr
+
+        = simple_form_for resource, url: admin_v_bsu_settings_path, method: :put do |settings_form|
+          = settings_form.input :host
+          = settings_form.input :api_secret
+          = settings_form.input :application_id
+
+          = save_button
+
+  .col-sm-6
+    .card
+      .card-body
+        h2 = t('shared.remote_v_bsu_settings')
+        hr
+
+        - if resource.host.present?
+          - settings = Api::Client::VBsu.new.settings
+
+          = simple_form_for :v_bsu_settings, url: update_remote_admin_v_bsu_settings_path,
+                                             method: :post do |v_bsu_settings_form|
+            = v_bsu_settings_form.input :token_length, input_html: { value: settings[:token_length] }
+            = v_bsu_settings_form.input :user_token_ttl, input_html: { value: settings[:user_token_ttl] }
+            = v_bsu_settings_form.input :token_alphabet, input_html: { value: settings[:token_alphabet] }
+
+            = save_button
+        - else
+          .alert.alert-danger = t('explanations.v_bsu_host_presense')

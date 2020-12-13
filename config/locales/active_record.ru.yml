@@ -26,10 +26,11 @@ ru:
         place: Место
         kind: Тип
         start_time: Начало
-      settings:
+      settings/application:
         application_title: Название приложения
         repo_url: URL репозитория
         telegram_bot_url: URL Telegram бота
-        v_bsu_host: Хост
-        v_bsu_api_secret: API токен
-        v_bsu_application_id: ID приложения
+      settings/v_bsu:
+        host: Хост
+        api_secret: API токен
+        application_id: ID приложения

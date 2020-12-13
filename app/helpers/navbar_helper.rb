@@ -66,14 +66,14 @@ module NavbarHelper
   def navbar_bot_link
     navbar_link(
       safe_join([fa_icon('window-restore'), ' ', t('navbar.bot')]),
-      Settings.instance.telegram_bot_url, target: '_blank'
+      Settings::Application.instance.telegram_bot_url, target: '_blank'
     )
   end
 
   def navbar_repo_link
     navbar_link(
       safe_join([fa_icon('github'), ' ', t('navbar.github')]),
-      Settings.instance.repo_url, target: '_blank'
+      Settings::Application.instance.repo_url, target: '_blank'
     )
   end
 
