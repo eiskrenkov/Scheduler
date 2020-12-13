@@ -3,7 +3,6 @@ default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  socket: /tmp/mysql.sock
 
 development:
   <<: *default
@@ -11,6 +10,6 @@ development:
 
 production:
   <<: *default
-  database: Scheduler_production
-  username: Scheduler
-  password: "<%= Rails.application.credentials.dig(:database, :password) %>"
+  database: <%= Rails.application.credentials.dig(:database, :name) %>
+  username: <%= Rails.application.credentials.dig(:database, :username) %>
+  password: <%= Rails.application.credentials.dig(:database, :password) %>
