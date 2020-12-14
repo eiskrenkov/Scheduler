@@ -93,17 +93,17 @@ module NavbarHelper
 
   def navbar_authentication_dropdown
     navbar_dropdown(current_user.username, section: :profile) do
-      safe_join [
-        navbar_dropdown_link(
-          safe_join([fa_icon('user'), ' ', t('shared.profile')]), personal_profile_path
-        ),
-        navbar_dropdown_link(
-          safe_join([fa_icon('cog'), ' ', t('shared.admin')]), admin_root_path
-        ),
-        navbar_dropdown_link(
-          safe_join([fa_icon('sign-out'), ' ', t('shared.log_out')]), destroy_user_session_path, method: :delete
-        )
-      ]
+      concat navbar_dropdown_link(
+        safe_join([fa_icon('user'), ' ', t('shared.profile')]), personal_profile_path
+      )
+
+      concat navbar_dropdown_link(
+        safe_join([fa_icon('cog'), ' ', t('shared.admin')]), admin_root_path
+      ) if current_user.admin
+
+      concat navbar_dropdown_link(
+        safe_join([fa_icon('sign-out'), ' ', t('shared.log_out')]), destroy_user_session_path, method: :delete
+      )
     end
   end
 
