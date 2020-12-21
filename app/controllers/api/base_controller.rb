@@ -1,7 +1,8 @@
 class Api::BaseController < ApplicationController
-  wrap_parameters false
+  PARAMS_TO_EXCLUDE = %i[controller action format].freeze
 
-  rescue_from ActiveRecord::RecordNotFound, with: :respond_with_error
+  wrap_parameters false
+  rescue_from StandardError, with: :respond_with_error
 
   def api_response(object, options = nil)
     response_data = { json: object.as_json, status: :ok }
@@ -12,6 +13,14 @@ class Api::BaseController < ApplicationController
   private
 
   def respond_with_error(exception)
-    api_response({ message: exception.message }, status: :unprocessable_entity)
+    message = exception.message
+
+    Rails.logger.error(message)
+    api_response({ message: message }, status: :unprocessable_entity)
+  end
+
+  def permitted_params
+    @permitted_params ||= params.except(*PARAMS_TO_EXCLUDE)
+                                .permit!.to_h.with_indifferent_access
   end
 end

@@ -32,9 +32,9 @@ class Api::Client::Base
       "Performing API request: #{verb.upcase} #{api_host}/#{endpoint} with params #{params.as_json}"
     )
 
-    JSON.parse(
-      connection.send(verb, endpoint, params).body
-    ).with_indifferent_access
+    JSON.parse(connection.send(verb, endpoint, params).body).with_indifferent_access.tap do |response|
+      Rails.logger.info("Response: #{response}")
+    end
   rescue StandardError => e
     Rails.logger.error("API error: #{e.message}")
     raise Error, e.message

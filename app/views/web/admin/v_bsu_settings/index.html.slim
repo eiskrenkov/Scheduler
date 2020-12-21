@@ -23,9 +23,8 @@
 
           = simple_form_for :v_bsu_settings, url: update_remote_admin_v_bsu_settings_path,
                                              method: :post do |v_bsu_settings_form|
-            = v_bsu_settings_form.input :token_length, input_html: { value: settings[:token_length] }
-            = v_bsu_settings_form.input :user_token_ttl, input_html: { value: settings[:user_token_ttl] }
-            = v_bsu_settings_form.input :token_alphabet, input_html: { value: settings[:token_alphabet] }
+            - settings.each do |key, value|
+              = v_bsu_settings_form.input key, input_html: { value: value }
 
             = save_button
         - else

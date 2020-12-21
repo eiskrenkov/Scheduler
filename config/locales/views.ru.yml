@@ -35,6 +35,7 @@ ru:
     group: (Группа %{name})
     admin:
       settings: Настройки
+      applications: Приложения
       groups: Группы
 
   devise:

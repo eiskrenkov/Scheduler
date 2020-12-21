@@ -27,6 +27,8 @@ Rails.application.routes.draw do
         put :update, on: :collection
       end
 
+      resources :applications, except: %i[show]
+
       resources :v_bsu_settings, only: %i[index] do
         put :update, on: :collection
         post :update_remote, on: :collection
@@ -46,12 +48,12 @@ Rails.application.routes.draw do
 
   # API routes
   namespace :api do
+    get :init, to: 'init#index'
+
     resources :schedule, only: %i[index]
 
-    resources :weekdays, only: [] do
-      collection do
-        get :current
-      end
+    resources :groups, only: [] do
+      get :schedule, on: :collection
     end
   end
 

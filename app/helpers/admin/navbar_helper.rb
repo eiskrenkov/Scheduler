@@ -7,6 +7,10 @@ module Admin::NavbarHelper
     navbar_link(t('navbar.admin.settings'), admin_application_settings_path, section: 'admin/application_settings')
   end
 
+  def admin_navbar_applications_link
+    navbar_link(t('navbar.admin.applications'), admin_applications_path, section: 'admin/applications')
+  end
+
   def admin_navbar_v_bsu_settings_link
     navbar_link(t('shared.v_bsu_settings'), admin_v_bsu_settings_path, section: 'admin/v_bsu_settings')
   end

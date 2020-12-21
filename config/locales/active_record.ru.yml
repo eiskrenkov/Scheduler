@@ -11,6 +11,11 @@ ru:
         few: Группы
         many: Групп
         other: Групп
+      application:
+        one: Приложение
+        few: Приложения
+        many: Приложений
+        other: Приложений
     attributes:
       user:
         username: Имя пользователя
@@ -20,6 +25,13 @@ ru:
       group:
         name: Название
         updated_at: Обновлено
+      application:
+        name: Имя
+        application_id: ID приложения
+        api_secret: Секретный ключ
+        request_timeout: Время ожидания запроса
+        validate_signature: Проверять подписи запросов
+        validate_timestamp: Проверять время запроса
       pair:
         name: Название
         teacher: Преподаватель

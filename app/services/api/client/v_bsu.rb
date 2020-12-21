@@ -1,10 +1,10 @@
 class Api::Client::VBsu < Api::Client::Base
   def settings
     handle_errrors({}) do
-      settings = get("admin/getProperties/#{application_id}").deep_symbolize_keys
-      return {} if settings.empty?
+      settings = get('admin/getProperties', appId: application_id).deep_symbolize_keys
+      return {} unless (values = settings.try(:[], :values))
 
-      settings[:values].inject({}) do |memo, value|
+      values.inject({}) do |memo, value|
         memo.merge(value[:key].to_sym => value[:value])
       end
     end
@@ -12,7 +12,7 @@ class Api::Client::VBsu < Api::Client::Base
 
   def update(params)
     handle_errrors(false) do
-      post("admin/setProperties/#{application_id}", params)
+      post('admin/setProperties', params.merge(appId: application_id))
     end
   end
 

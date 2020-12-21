@@ -1,0 +1,24 @@
+.card.collection-grid
+  .card-header
+    .btn-toolbar
+      = new_button
+
+  = table_tag
+    thead
+    tr
+      th = resource_class.human_attribute_name(:id)
+      th = resource_class.human_attribute_name(:name)
+      th = resource_class.human_attribute_name(:application_id)
+      th = resource_class.human_attribute_name(:updated_at)
+      th
+    tbody
+      - collection.each do |application|
+        tr
+          td = application.id
+          td = application.name
+          td = application.application_id
+          td = updated_at_in_words(application)
+          td
+            .btn-toolbar
+              = edit_button(application)
+              = delete_button(application)
