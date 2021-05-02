@@ -59,7 +59,8 @@ ru:
 
   personal:
     telegram:
-      usage: Для использования бота необходимо привязать Telegram аккаунт к профилю
+      not_associated: Для использования бота необходимо привязать Telegram аккаунт к профилю
+      associated: Ваш Telegram аккаунт успешно привязан! Telegram ID - %{telegram_id}
       associate: Связать аккаунты
 
   confirmations:

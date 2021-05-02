@@ -30,7 +30,7 @@ class Api::Signature
     when Hash
       data.map do |key, value|
         [stringify_data(key), stringify_data(value)]
-      end.flatten.join
+      end.sort.flatten.join
     when Array
       data.map do |item|
         stringify_data(item)

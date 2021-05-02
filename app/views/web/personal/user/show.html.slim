@@ -13,6 +13,10 @@
     .card
       .card-body
         h5.card-title Telegram
-        p.card-text = t('personal.telegram.usage')
 
-        = bootstrap_button t('personal.telegram.associate'), url: root_path
+        p.card-text
+          - if current_user.telegram_id.blank?
+            = t('personal.telegram.not_associated')
+            = bootstrap_button t('personal.telegram.associate'), url: root_path
+          - else
+            = t('personal.telegram.associated', telegram_id: current_user.telegram_id)

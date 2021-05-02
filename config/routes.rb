@@ -52,8 +52,12 @@ Rails.application.routes.draw do
 
     resources :schedule, only: %i[index]
 
-    resources :groups, only: [] do
-      get :schedule, on: :collection
+    namespace :groups do
+      get :schedule
+    end
+
+    namespace :telegram do
+      post :set_group
     end
   end
 
