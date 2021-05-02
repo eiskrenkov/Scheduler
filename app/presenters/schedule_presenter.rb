@@ -1,4 +1,10 @@
 class SchedulePresenter < BasePresenter
+  attr_reader :groups
+
+  def initialze(groups)
+    @groups = groups
+  end
+
   def present
     {
       groups: present_groups
@@ -8,7 +14,7 @@ class SchedulePresenter < BasePresenter
   private
 
   def present_groups
-    Group.all.map do |group|
+    groups.map do |group|
       GroupPresenter.new(group).present
     end
   end

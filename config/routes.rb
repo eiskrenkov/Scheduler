@@ -57,7 +57,14 @@ Rails.application.routes.draw do
     end
 
     namespace :telegram do
-      post :set_group
+      scope module: :base do
+        get :schedule
+      end
+
+      namespace :groups do
+        get :list
+        post :set
+      end
     end
   end
 
