@@ -27,9 +27,6 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  # Enable Bot's session unconditionally.
-  config.telegram_updates_controller.session_store = :memory_store
-
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :local
 

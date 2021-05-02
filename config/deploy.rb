@@ -10,3 +10,5 @@ set :rvm_custom_path, '/usr/share/rvm'
 
 # Linked files and directories
 set :linked_dirs, %w[log tmp/pids tmp/cache]
+
+set :passenger_restart_with_touch, true

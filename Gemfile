@@ -15,7 +15,6 @@ gem 'inherited_resources'
 gem 'faraday'
 
 # Telegram
-gem 'telegram-bot'
 gem 'omniauth-telegram'
 
 # Frontend
@@ -32,7 +31,6 @@ gem 'bootstrap-select-rails'
 gem 'bootsnap', '~> 1.3', require: false
 
 group :development do
-  gem 'foreman'
   gem 'listen'
   gem 'spring'
   gem 'spring-watcher-listen'

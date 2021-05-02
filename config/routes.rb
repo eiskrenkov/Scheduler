@@ -68,8 +68,5 @@ Rails.application.routes.draw do
     end
   end
 
-  # Telegram routes
-  telegram_webhook Telegram::PersonalController
-
   root to: 'web/public/schedule#index'
 end
