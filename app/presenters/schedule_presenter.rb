@@ -1,7 +1,7 @@
 class SchedulePresenter < BasePresenter
   attr_reader :groups
 
-  def initialze(groups)
+  def initialize(groups)
     @groups = groups
   end
 

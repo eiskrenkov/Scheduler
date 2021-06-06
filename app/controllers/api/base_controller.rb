@@ -16,6 +16,7 @@ class Api::BaseController < ApplicationController
     message = exception.message
 
     Rails.logger.error(message)
+    Rails.logger.error(exception.backtrace.join("\n"))
     api_response({ message: message }, status: :unprocessable_entity)
   end
 
