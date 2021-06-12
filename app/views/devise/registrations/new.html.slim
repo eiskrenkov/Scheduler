@@ -3,9 +3,6 @@
     h2 = application_title
     p = t('explanations.register')
 
-    = icon_button 'telegram', title: t('shared.log_in_with_telegram'),
-                              url: user_telegram_omniauth_authorize_path, class: 'btn-primary'
-
     br
 
     = simple_form_for resource, url: registration_path(resource_name) do |f|

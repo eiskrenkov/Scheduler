@@ -32,8 +32,4 @@ Devise.setup do |config|
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
-
-  # Telegram omniauth strategy
-  telegram_bot_credentials = Rails.application.credentials.telegram_bot
-  config.omniauth :telegram, telegram_bot_credentials.fetch(:name), telegram_bot_credentials.fetch(:token)
 end
